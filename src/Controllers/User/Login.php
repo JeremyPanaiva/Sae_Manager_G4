@@ -6,6 +6,7 @@ use Views\User\LoginView;
 
 class Login implements ControllerInterface
 {
+    public const PATH = "/user/login";
     function control(){
         $view = new LoginView();
         $view->render();
@@ -13,6 +14,6 @@ class Login implements ControllerInterface
     }
 
     static function support(string $chemin, string $method) : bool{
-        return $chemin === "/user/login" && $method === "GET";
+        return $chemin === self::PATH && $method === "GET";
     }
 }

@@ -1,11 +1,12 @@
 <?php
 include "Autoloader.php";
 
+use Controllers\Home\HomeController;
 use Controllers\User\Login;
 use Controllers\User\Register;
 use Controllers\User\LoginPost;
 
-$controller = [new Login(), new Register(), new LoginPost()];
+$controller = [new Login(), new Register(), new LoginPost(),new HomeController()];
 
 
 
