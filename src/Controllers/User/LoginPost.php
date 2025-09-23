@@ -1,7 +1,8 @@
 <?php
 namespace Controllers\User;
-use Controllers\ControllerInterface ; 
+use Controllers\ControllerInterface ;
 use Models\User\User;
+use Models\User\UserDTO;
 use Views\User\LoginView;
 use Views\User\UserView;
 
@@ -9,7 +10,13 @@ use Views\User\UserView;
 class LoginPost implements ControllerInterface
 {
     function control(){
-        $user = new User($_POST[LoginView::USERNAME], $_POST[LoginView::PASSWORD]);
+        $user = new User();
+        $userDTO = $user->login($_POST[LoginView::USERNAME], $_POST[LoginView::PASSWORD]);
+        if($userDTO !== null){
+            // Repartir vers tableau de bord
+            return ;
+        }
+        // repartir vers le formulaire
         $view = new UserView($user);
         $view->render();
 

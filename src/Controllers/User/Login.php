@@ -1,7 +1,7 @@
 <?php
 namespace Controllers\User;
 use Controllers\ControllerInterface ; 
-use Models\User\User;
+use Models\User\UserDTO;
 use Views\User\LoginView;
 
 class Login implements ControllerInterface

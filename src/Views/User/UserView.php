@@ -1,7 +1,7 @@
 <?php
 
 namespace Views\User;
-use Models\User\User;
+use Models\User\UserDTO;
 use Views\AbstractView;
 
 class UserView extends AbstractView {
@@ -10,7 +10,7 @@ class UserView extends AbstractView {
     public const USERNAME_KEY = 'USERNAME_KEY';
     private const TEMPLATE_HTML = __DIR__ . '/user.html';
 
-    public function __construct(private User $user){
+    public function __construct(private UserDTO $user){
     }
 
     public function templatePath() : string {

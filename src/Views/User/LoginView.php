@@ -1,7 +1,7 @@
 <?php
 
 namespace Views\User;
-use Models\User\User;
+use Models\User\UserDTO;
 use Views\AbstractView;
 
 class LoginView extends AbstractView {

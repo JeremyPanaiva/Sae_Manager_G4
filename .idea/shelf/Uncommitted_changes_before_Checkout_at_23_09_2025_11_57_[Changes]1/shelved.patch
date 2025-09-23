@@ -1,0 +1,267 @@
+Index: src/Controllers/User/LoginPost.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nnamespace Controllers\\User;\nuse Controllers\\ControllerInterface ; \nuse Models\\User\\User;\nuse Views\\User\\LoginView;\nuse Views\\User\\UserView;\n\n\nclass LoginPost implements ControllerInterface\n{\n    function control(){\n        $user = new User($_POST[LoginView::USERNAME], $_POST[LoginView::PASSWORD]);\n        $view = new UserView($user);\n        $view->render();\n\n    }\n\n    static function support(string $chemin, string $method) : bool{\n        return $chemin === \"/user/login\" && $method === \"POST\";\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Controllers/User/LoginPost.php b/src/Controllers/User/LoginPost.php
+--- a/src/Controllers/User/LoginPost.php	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/src/Controllers/User/LoginPost.php	(date 1758621383062)
+@@ -1,7 +1,8 @@
+ <?php
+ namespace Controllers\User;
+-use Controllers\ControllerInterface ; 
++use Controllers\ControllerInterface ;
+ use Models\User\User;
++use Models\User\UserDTO;
+ use Views\User\LoginView;
+ use Views\User\UserView;
+ 
+@@ -9,7 +10,13 @@
+ class LoginPost implements ControllerInterface
+ {
+     function control(){
+-        $user = new User($_POST[LoginView::USERNAME], $_POST[LoginView::PASSWORD]);
++        $user = new User();
++        $userDTO = $user->login($_POST[LoginView::USERNAME], $_POST[LoginView::PASSWORD]);
++        if($userDTO !== null){
++            // Repartir vers tableau de bord
++            return ;
++        }
++        // repartir vers le formulaire
+         $view = new UserView($user);
+         $view->render();
+ 
+Index: src/Models/User/User.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nnamespace Models\\User;\n\nclass User{\n    private string $username ; \n    private string $password ; \n\n    public function __construct(string $username, string $password){\n        $this->username = $username ; \n        $this->password = $password ; \n    }\n\n    public function getUsername() : string {\n        return $this->username ; \n    }\n\n    public function getPassword() : string {\n        return $this->password ; \n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Models/User/User.php b/src/Models/User/User.php
+--- a/src/Models/User/User.php	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/src/Models/User/User.php	(date 1758621362757)
+@@ -1,20 +1,12 @@
+ <?php
++
+ namespace Models\User;
+ 
+-class User{
+-    private string $username ; 
+-    private string $password ; 
+-
+-    public function __construct(string $username, string $password){
+-        $this->username = $username ; 
+-        $this->password = $password ; 
+-    }
++class User
++{
+ 
+-    public function getUsername() : string {
+-        return $this->username ; 
+-    }
+-
+-    public function getPassword() : string {
+-        return $this->password ; 
++    function login($username, $password): ?UserDTO
++    {
++        return new UserDTO($username, $password);
+     }
+ }
+\ No newline at end of file
+Index: _assets/css/index.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>body {\n    background: red;\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/_assets/css/index.css b/_assets/css/index.css
+--- a/_assets/css/index.css	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/_assets/css/index.css	(date 1758620277884)
+@@ -1,4 +1,83 @@
++:root {
++    --amu-blue: #003366;
++    --amu-light-blue: #0066cc;
++    --amu-gray: #f8f9fa;
++    --amu-dark-gray: #6c757d;
++    --white: #ffffff;
++    --success: #28a745;
++    --warning: #ffc107;
++    --danger: #dc3545;
++}
++
++* {
++    margin: 0;
++    padding: 0;
++    box-sizing: border-box;
++}
++
+ body {
+-    background: red;
++    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
++    background-color: var(--amu-gray);
++    color: var(--amu-blue);
++    line-height: 1.6;
++}
++
++.header {
++    background: linear-gradient(135deg, var(--amu-blue) 0%, var(--amu-light-blue) 100%);
++    color: var(--white);
++    padding: 1rem 0;
++    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
++}
++
++.header-content {
++    max-width: 1200px;
++    margin: 0 auto;
++    display: flex;
++    justify-content: space-between;
++    align-items: center;
++    padding: 0 2rem;
++}
++
++.logo {
++    display: flex;
++    align-items: center;
++    gap: 1rem;
++}
++
++.logo h1 {
++    font-size: 1.5rem;
++    font-weight: 600;
++}
++
++.user-info {
++    display: flex;
++    align-items: center;
++    gap: 1rem;
++}
++
++.nav {
++    background: var(--white);
++    border-bottom: 1px solid #e9ecef;
++    padding: 0;
++}
++
++.nav-content {
++    max-width: 1200px;
++    margin: 0 auto;
++    display: flex;
++    padding: 0 2rem;
++}
+ 
+-}
+\ No newline at end of file
++.nav-item {
++    padding: 1rem 1.5rem;
++    cursor: pointer;
++    border-bottom: 3px solid transparent;
++    transition: all 0.3s ease;
++    color: var(--amu-blue);
++    font-weight: 500;
++}
++
++.nav-item:hover, .nav-item.active {
++    background-color: var(--amu-gray);
++    border-bottom-color: var(--amu-light-blue);
++}
+Index: src/Views/User/LoginView.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Views\\User;\nuse Models\\User\\User;\nuse Views\\AbstractView;\nuse Views\\Base\\BaseView;\n\nclass LoginView extends BaseView {\n\n    public const USERNAME = \"uname\";\n    public const PASSWORD = \"psw\";\n    public const USERNAME_KEY = 'USERNAME_KEY';\n    public const PASSWORD_KEY = 'PASSWORD_KEY';\n    private const KEYS = [self::USERNAME_KEY => self::USERNAME, self::PASSWORD_KEY => self::PASSWORD];\n    private const TEMPLATE_HTML = __DIR__ . '/form.html';\n\n    public function templatePath() : string {\n        return self::TEMPLATE_HTML; \n    }\n\n    public function templateKeys() : array {\n        return self::KEYS ; \n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Views/User/LoginView.php b/src/Views/User/LoginView.php
+--- a/src/Views/User/LoginView.php	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/src/Views/User/LoginView.php	(date 1758621160746)
+@@ -1,7 +1,7 @@
+ <?php
+ 
+ namespace Views\User;
+-use Models\User\User;
++use Models\User\UserDTO;
+ use Views\AbstractView;
+ use Views\Base\BaseView;
+ 
+Index: src/Views/User/UserView.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Views\\User;\nuse Models\\User\\User;\nuse Views\\AbstractView;\nuse Views\\Base\\BaseView;\n\nclass UserView extends BaseView {\n\n    public const USERNAME = \"uname\";\n    public const USERNAME_KEY = 'USERNAME_KEY';\n    private const TEMPLATE_HTML = __DIR__ . '/user.html';\n\n    public function __construct(private User $user){\n    }\n\n    public function templatePath() : string {\n        return self::TEMPLATE_HTML; \n    }\n\n    public function templateKeys() : array {\n        return [self::USERNAME_KEY => $this->user->getUsername()] ;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Views/User/UserView.php b/src/Views/User/UserView.php
+--- a/src/Views/User/UserView.php	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/src/Views/User/UserView.php	(date 1758621160728)
+@@ -1,7 +1,7 @@
+ <?php
+ 
+ namespace Views\User;
+-use Models\User\User;
++use Models\User\UserDTO;
+ use Views\AbstractView;
+ use Views\Base\BaseView;
+ 
+@@ -11,7 +11,7 @@
+     public const USERNAME_KEY = 'USERNAME_KEY';
+     private const TEMPLATE_HTML = __DIR__ . '/user.html';
+ 
+-    public function __construct(private User $user){
++    public function __construct(private UserDTO $user){
+     }
+ 
+     public function templatePath() : string {
+Index: src/Controllers/User/Login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nnamespace Controllers\\User;\nuse Controllers\\ControllerInterface ; \nuse Models\\User\\User;\nuse Views\\User\\LoginView;\n\nclass Login implements ControllerInterface\n{\n    public const PATH = \"/user/login\";\n    function control(){\n        $view = new LoginView();\n        $view->render();\n\n    }\n\n    static function support(string $chemin, string $method) : bool{\n        return $chemin === self::PATH && $method === \"GET\";\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Controllers/User/Login.php b/src/Controllers/User/Login.php
+--- a/src/Controllers/User/Login.php	(revision f2873ccdbe58ddbc55f18a972187139629b532e5)
++++ b/src/Controllers/User/Login.php	(date 1758621160710)
+@@ -1,7 +1,7 @@
+ <?php
+ namespace Controllers\User;
+ use Controllers\ControllerInterface ; 
+-use Models\User\User;
++use Models\User\UserDTO;
+ use Views\User\LoginView;
+ 
+ class Login implements ControllerInterface
+Index: src/Models/User/UserDTO.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Models/User/UserDTO.php b/src/Models/User/UserDTO.php
+new file mode 100644
+--- /dev/null	(date 1758621160762)
++++ b/src/Models/User/UserDTO.php	(date 1758621160762)
+@@ -0,0 +1,20 @@
++<?php
++namespace Models\User;
++
++class UserDTO{
++    private string $username ; 
++    private string $password ; 
++
++    public function __construct(string $username, string $password){
++        $this->username = $username ; 
++        $this->password = $password ; 
++    }
++
++    public function getUsername() : string {
++        return $this->username ; 
++    }
++
++    public function getPassword() : string {
++        return $this->password ; 
++    }
++}
+\ No newline at end of file
