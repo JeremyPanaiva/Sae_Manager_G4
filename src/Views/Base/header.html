@@ -8,3 +8,26 @@
     <title>Document</title>
 </head>
 <body>
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <h1>📚 SAE Tracker</h1>
+            <span>Département Informatique - AMU</span>
+        </div>
+        <div class="user-info">
+            <span>👤 {{USERNAME_KEY}}</span>
+            <button class="btn btn-outline" onclick="logout()"><a href="{{LINK_KEY}}">Se connecter</a></button>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-content">
+        <div class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</div>
+        <div class="nav-item" onclick="showSection('saes')">Mes SAEs</div>
+        <div class="nav-item" onclick="showSection('calendar')">Calendrier</div>
+        <div class="nav-item" onclick="showSection('competences')">Compétences</div>
+        <div class="nav-item" onclick="showSection('notifications')">Notifications</div>
+    </div>
+</nav>

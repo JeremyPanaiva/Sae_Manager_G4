@@ -24,11 +24,7 @@ class HomeView extends BaseView {
     }
 
     public function templateKeys() : array {
-
-        $isLogged = $this->user !== null;
         return [
-            self::USERNAME_KEY => $this->user?->getUsername() ?? 'Se connecter',
-            self::LINK_KEY => $isLogged  ? '/user/logout' : Login::PATH,
         ] ;
     }
 }
