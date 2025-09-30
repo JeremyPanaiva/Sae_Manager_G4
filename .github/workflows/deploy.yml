@@ -21,15 +21,19 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"
+          ssh-add -D
+          ssh-add ~/.ssh/id_rsa
 
       - name: Connect and deploy
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
           cd ~/www
           git init
           git remote add origin git@github.com:JeremyPanaiva/Sae_Manager_G4.git || true
           git fetch origin
           git reset --hard origin/main
           EOF
+
       - name: Cleanup
         run: rm -rf ~/.ssh
