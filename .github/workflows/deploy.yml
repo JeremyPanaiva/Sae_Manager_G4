@@ -1,5 +1,6 @@
 name: Deploy to AlwaysData
 
+# Déclenche le workflow à chaque push sur la branche main
 on:
   push:
     branches:
@@ -10,21 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Récupérer le code du dépôt Actions
+      # Étape 1 : Vérifier le code du dépôt
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      # 2. Configurer SSH avec la clé privée
+      # Étape 2 : Configurer la clé SSH
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          # Ajouter le serveur AlwaysData aux known_hosts pour éviter les confirmations interactives
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
-      # 3. Déployer le code
-      - name: Deploy
+      # Étape 3 : Déployer sur AlwaysData
+      - name: Deploy site
         run: |
-          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=no sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "\
-            cd ~/www/Sae_Manager_G4 || git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git ~/www/Sae_Manager_G4 && \
-            cd ~/www/Sae_Manager_G4 && git reset --hard origin/main"
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
+            cd ~/www/Sae_Manager_G4 || exit
+            git fetch origin
+            git reset --hard origin/main
+          "
