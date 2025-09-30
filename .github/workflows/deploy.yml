@@ -20,12 +20,11 @@ jobs:
           chmod 700 ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          # Ajouter l'hôte manuellement
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
       - name: Connect and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
           cd ~/www
           git init
           git remote add origin git@github.com:JeremyPanaiva/Sae_Manager_G4.git || true
