@@ -1,28 +1,28 @@
-name: Simple Deploy to AlwaysData
+name: Deploy to Alwaysdata
 
 on:
   push:
     branches:
-      - main
+      - main  # Déclenche le workflow à chaque push sur main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Vérifier le code du dépôt
-      - name: Checkout code
+      # 1️⃣ Récupérer le code depuis GitHub
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Étape 2 : Configurer SSH
-      - name: Set up SSH key
+      # 2️⃣ Configurer SSH
+      - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
-      # Étape 3 : Déployer le site
+      # 3️⃣ Déployer sur Alwaysdata
       - name: Deploy
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "cd ~/www && git pull origin main"
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no sae-man_
