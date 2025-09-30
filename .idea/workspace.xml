@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="Ajout workflows">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Home/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/Home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/form.html" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="test sql">
+      <change beforePath="$PROJECT_DIR$/test_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_db.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +139,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759253577819</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="test sql">
+      <option name="closed" value="true" />
+      <created>1759258481572</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759258481572</updated>
+    </task>
+    <task id="LOCAL-00010" summary="test sql">
+      <option name="closed" value="true" />
+      <created>1759258769581</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759258769581</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +164,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout connection" />
     <MESSAGE value="Ajout workflows" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout workflows" />
+    <MESSAGE value="test sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="test sql" />
   </component>
 </project>
