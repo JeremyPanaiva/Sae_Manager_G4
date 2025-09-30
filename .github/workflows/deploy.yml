@@ -3,14 +3,14 @@ name: Deploy to Alwaysdata
 on:
   push:
     branches:
-      - main  # déclenche le workflow à chaque push sur main
+      - main  # Déclenche le workflow à chaque push sur main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupérer le code depuis GitHub
+      # 1️⃣ Récupérer le code du dépôt
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -25,7 +25,7 @@ jobs:
       # 3️⃣ Déployer sur Alwaysdata
       - name: Deploy to Alwaysdata
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
           cd ~/www
           git pull origin main || git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git .
           "
