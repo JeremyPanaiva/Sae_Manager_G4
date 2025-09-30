@@ -1,0 +1,83 @@
+/* _assets/css/inscription.css */
+
+/* Couleurs globales */
+:root {
+    --amu-blue: #003366;
+    --amu-light-blue: #0066cc;
+    --amu-gray: #f8f9fa;
+    --amu-dark-gray: #6c757d;
+    --white: #ffffff;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+}
+
+/* Style général du formulaire */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    border: 1px solid var(--amu-dark-gray);
+    border-radius: 10px;
+    background-color: var(--amu-gray);
+    font-family: Arial, sans-serif;
+}
+
+/* Légende du fieldset */
+form fieldset {
+    border: none;
+    padding: 0;
+}
+
+form legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    color: var(--amu-blue);
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--amu-dark-gray);
+}
+
+/* Inputs texte, email et password */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--amu-dark-gray);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Bouton submit */
+form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--amu-light-blue);
+    color: var(--white);
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: var(--amu-blue);
+}
+
+/* Placeholder style */
+form input::placeholder {
+    color: var(--amu-dark-gray);
+    font-style: italic;
+}

@@ -2,13 +2,13 @@
 namespace Controllers\User;
 use Controllers\ControllerInterface ; 
 use Models\User\UserDTO;
-use Views\User\LoginView;
+use Views\User\ConnectionView;
 
 class Login implements ControllerInterface
 {
     public const PATH = "/user/login";
     function control(){
-        $view = new LoginView();
+        $view = new ConnectionView();
         $view->render();
 
     }

@@ -11,7 +11,7 @@ class UserView extends BaseView {
     public const USERNAME_KEY = 'USERNAME_KEY';
     private const TEMPLATE_HTML = __DIR__ . '/user.html';
 
-    public function __construct(private UserDTO $user){
+    public function __construct(protected ?\Models\User\User $user){
     }
 
     public function templatePath() : string {

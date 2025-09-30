@@ -1,3 +1,6 @@
+
+
+<title>Connection</title>
 <link rel="stylesheet" href="/_assets/css/form.css">
 <form action="/user/login" method="post">
   <div class="imgcontainer">
@@ -22,19 +25,3 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
-
-<?php
-$servername = "adresse_du_serveur_bd";  // ex : 123.45.67.89 ou db.monsite.com
-$username = "ton_user";
-$password = "ton_mdp";
-$dbname = "users_db";
-
-// Créer la connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifier la connexion
-if ($conn->connect_error) {
-die("Connexion échouée: " . $conn->connect_error);
-}
-echo "Connexion réussie !";
-?>

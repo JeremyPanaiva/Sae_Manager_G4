@@ -14,6 +14,9 @@ class HeaderView extends AbstractView
     public const LINK_KEY = 'LINK_KEY';
     private $user;
 
+    public const INSCRIPTION_LINK_KEY = 'INSCRIPTION_LINK_KEY';
+
+
     public function __construct(?User $user = null)
     {
     }
@@ -25,11 +28,13 @@ class HeaderView extends AbstractView
 
     function templateKeys(): array
     {
-
         $isLogged = $this->user !== null;
+
         return [
             self::USERNAME_KEY => $this->user?->getUsername() ?? 'Nom Prenom',
-            self::LINK_KEY => $isLogged  ? '/user/logout' : Login::PATH,
-        ] ;
+            self::LINK_KEY => $isLogged ? '/user/logout' : Login::PATH,
+            self::INSCRIPTION_LINK_KEY => '/index.php?action=inscription'
+        ];
     }
+
 }

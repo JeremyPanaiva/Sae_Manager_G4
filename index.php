@@ -6,30 +6,23 @@ use Controllers\User\Login;
 use Controllers\User\Register;
 use Controllers\User\LoginPost;
 
-$controller = [new Login(), new Register(), new LoginPost(),new HomeController()];
+$controllers = [new Login(), new Register(), new LoginPost(), new HomeController()];
 
-
-
-//$controller[$_SERVER['REQUEST_URI']]->control();
-
-foreach ($controller as $key => $value) {
-    if($value::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])){
-        $value->control();
+// Gestion des routes via les controllers
+foreach ($controllers as $controller) {
+    if($controller::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])){
+        $controller->control();
         exit();
     }
-
-
 }
 
-echo "Not Found";
+// Gestion de l’action inscription
+if (isset($_GET['action']) && $_GET['action'] === 'inscription') {
+    $view = new \Views\User\InscriptionView();
+    $view->render();
     exit();
-
-/*
-if( === $_SERVER['REQUEST_URI']){
-    $login = new Login();
-    $login->control();
 }
-if(=== $_SERVER['REQUEST_URI']){
-    $login = new Register();
-    $login->control();
-}*/
+
+// Si aucune route trouvée
+echo "Not Found";
+exit();
