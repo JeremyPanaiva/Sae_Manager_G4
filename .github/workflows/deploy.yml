@@ -1,39 +1,35 @@
-name: Deploy to Alwaysdata
+name: Deploy to AlwaysData
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Déclenche le workflow lors d'un push sur la branche 'main'
 
 jobs:
-  run_pull:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Étape 1 : Vérifier le code du dépôt
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install SSH keys
+      # Étape 2 : Configurer SSH
+      - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          # Ajouter la clé de l'hôte à known_hosts
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
-          eval "$(ssh-agent -s)"
-          ssh-add -D
-          ssh-add ~/.ssh/id_rsa
 
-      - name: Connect and deploy
+      # Étape 3 : Connecter et déployer
+      - name: Deploy to AlwaysData
         run: |
-          ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -F /dev/null ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net << 'EOF'
           cd ~/www
           git init
           git remote add origin git@github.com:JeremyPanaiva/Sae_Manager_G4.git || true
           git fetch origin
           git reset --hard origin/main
           EOF
-
-      - name: Cleanup
-        run: rm -rf ~/.ssh
