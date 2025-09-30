@@ -31,6 +31,5 @@ jobs:
           git pull origin main || git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git .
           "
 
-      # 4️⃣ Nettoyage (optionnel)
       - name: Cleanup
         run: rm -rf ~/.ssh
