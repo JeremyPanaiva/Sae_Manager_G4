@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout le dépôt pour que GitHub Actions ait le code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Configurer la clé SSH
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
@@ -22,7 +20,6 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
-      # 3️⃣ Déployer sur Alwaysdata
       - name: Deploy
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
