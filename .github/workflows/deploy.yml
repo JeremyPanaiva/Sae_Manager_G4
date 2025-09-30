@@ -26,10 +26,11 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ~/www
-          # Supprimer l'ancien contenu si nécessaire
-          rm -rf ./*
-          # Cloner le dépôt GitHub
-          git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git .
+          # Initialisation du dépôt si ce n'est pas déjà un git
+          git init
+          git remote add origin git@github.com:JeremyPanaiva/Sae_Manager_G4.git || true
+          git fetch origin
+          git reset --hard origin/main
           EOF
 
       - name: Cleanup
