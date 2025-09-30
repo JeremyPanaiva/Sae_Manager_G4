@@ -48,6 +48,12 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
 }
+a {
+    color: inherit;       /* hérite de la couleur du parent */
+    text-decoration: none; /* supprime le soulignement */
+    font-weight: inherit;  /* hérite du poids de la police */
+}
+
 
 .user-info {
     display: flex;
