@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <link rel="stylesheet" href="/_assets/css/index.css">
-    <title>Document</title>
+    <title>SAE Tracker</title>
 </head>
 <body>
 <header class="header">
-    <div class="header-content">
-        <div class="logo">
+    <section class="header-content">
+        <section class="logo">
             <h1 class="logo">
                 <a href="/">📚 SAE Tracker</a>
             </h1>
-            <span>Département Informatique - AMU</span>
-        </div>
-        <div class="user-info">
-            <span>👤 {{USERNAME_KEY}}</span>
-            <button class="btn btn-outline" onclick="logout()"><a href="{{LINK_KEY}}">Se connecter</a></button>
-        </div>
-    </div>
+            <p>Département Informatique - AMU</p>
+        </section>
+        <section class="user-info">
+            <p>👤 {{USERNAME_KEY}}</p>
+            <button class="btn btn-outline" onclick="logout()">
+                <a href="{{LINK_KEY}}">Se connecter</a>
+            </button>
+        </section>
+    </section>
 </header>
 
 <!-- Navigation -->
 <nav class="nav">
-    <div class="nav-content">
-        <div class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</div>
-        <div class="nav-item" onclick="showSection('saes')">Mes SAEs</div>
-        <div class="nav-item" onclick="showSection('calendar')">Calendrier</div>
-        <div class="nav-item" onclick="showSection('competences')">Compétences</div>
-        <div class="nav-item" onclick="showSection('notifications')">Notifications</div>
-    </div>
+    <ul class="nav-content">
+        <li class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</li>
+        <li class="nav-item" onclick="showSection('saes')">Mes SAEs</li>
+        <li class="nav-item" onclick="showSection('calendar')">Calendrier</li>
+        <li class="nav-item" onclick="showSection('competences')">Compétences</li>
+        <li class="nav-item" onclick="showSection('notifications')">Notifications</li>
+    </ul>
 </nav>
+</body>
+
