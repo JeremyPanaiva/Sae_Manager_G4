@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="test sql">
-      <change afterPath="$PROJECT_DIR$/src/Models/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/User/InscriptionView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/User/Traitement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/User/Traitement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_sae.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Home/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/Home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Home/HomeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/HomeView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/LoginView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/ConnectionView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/RegisterView.php" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/inscription.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/UserView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/UserView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/connection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/Traitement.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +62,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controllers/User" />
+      <recent name="$PROJECT_DIR$/src/Models/User" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -93,7 +87,7 @@
       <workItem from="1759237634903" duration="7465000" />
       <workItem from="1759251519415" duration="2787000" />
       <workItem from="1759262416332" duration="4210000" />
-      <workItem from="1759266940518" duration="110000" />
+      <workItem from="1759266940518" duration="3342000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -191,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759259528029</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="test sql">
+      <option name="closed" value="true" />
+      <created>1759267068330</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759267068330</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
