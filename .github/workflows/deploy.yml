@@ -27,7 +27,7 @@ jobs:
 
       - name: Connect and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes ${{ secrets.SSH_USER }}@ssh-sae-manager-g4.alwaysdata.net << EOF
           cd ~/www
           git init
           git remote add origin git@github.com:JeremyPanaiva/Sae_Manager_G4.git || true
