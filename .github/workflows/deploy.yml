@@ -31,6 +31,5 @@ jobs:
           git fetch origin
           git reset --hard origin/main
           EOF
-
       - name: Cleanup
         run: rm -rf ~/.ssh
