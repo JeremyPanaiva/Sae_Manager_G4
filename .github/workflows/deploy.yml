@@ -8,18 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
-
+      - uses: actions/checkout@v3
       - name: Deploy via SSH
-        run: |
-          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "cd ~/www/Sae_Manager_G4 && git pull origin main"
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ssh-sae-manager-g4.alwaysdata.net
+          username: sae-manager-g4
+          key: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          script: |
+            cd /home/sae-manager-g4/www/Sae_Manager_G4
+            git pull origin main
