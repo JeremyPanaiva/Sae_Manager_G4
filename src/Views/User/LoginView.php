@@ -3,8 +3,9 @@
 namespace Views\User;
 use Models\User\UserDTO;
 use Views\AbstractView;
+use Views\Base\BaseView;
 
-class LoginView extends AbstractView {
+class LoginView extends BaseView {
 
     public const USERNAME = "uname";
     public const PASSWORD = "psw";

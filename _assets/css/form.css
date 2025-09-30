@@ -1,0 +1,111 @@
+/* Mise en page générale */
+/* Style du formulaire */
+form {
+    background-color: #fff;
+    width: 350px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease-in-out;
+    margin: auto;
+    margin-top: 4%;
+}
+
+/* Avatar */
+.imgcontainer {
+    text-align: center;
+}
+
+img.avatar {
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid #0984e3;
+}
+
+/* Conteneur des champs */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 8px 0 4px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Champs texte */
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #0984e3;
+    box-shadow: 0 0 5px rgba(9,132,227,0.5);
+}
+
+/* Bouton principal */
+button[type="submit"] {
+    background-color: #0984e3;
+    color: white;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #74b9ff;
+}
+
+/* Bouton annuler */
+.cancelbtn {
+    background-color: #d63031;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100px;
+    transition: 0.3s;
+}
+
+.cancelbtn:hover {
+    background-color: #ff7675;
+}
+
+/* Section bas du formulaire */
+.container:last-of-type {
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.psw a {
+    color: #0984e3;
+    text-decoration: none;
+}
+
+.psw a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
