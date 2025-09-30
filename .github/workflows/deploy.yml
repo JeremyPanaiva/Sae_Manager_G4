@@ -3,7 +3,7 @@ name: Deploy to Alwaysdata
 on:
   push:
     branches:
-      - main  # Déclenche le workflow à chaque push sur main
+      - main  # déclenche le workflow à chaque push sur main
 
 jobs:
   deploy:
@@ -23,6 +23,9 @@ jobs:
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
       # 3️⃣ Déployer sur Alwaysdata
-      - name: Deploy
+      - name: Deploy to Alwaysdata
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no sae-man_
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
+          cd ~/www
+          git pull origin main || git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git .
+          "
