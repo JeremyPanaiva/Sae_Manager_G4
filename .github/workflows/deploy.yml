@@ -4,32 +4,29 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupérer le code
+      # 1️⃣ Checkout le dépôt pour que GitHub Actions ait le code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Configurer SSH
-      - name: Install SSH key
+      # 2️⃣ Configurer la clé SSH
+      - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ssh-sae-manager-g4.alwaysdata.net >> ~/.ssh/known_hosts
 
-      # 3️⃣ Déployer
-      - name: Connect and deploy
+      # 3️⃣ Déployer sur Alwaysdata
+      - name: Deploy
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes sae-manager-g4@ssh-sae-manager-g4.alwaysdata.net "
           cd ~/www
-          git pull origin main || git clone git@github.com:JeremyPanaiva/Sae_Manager_G4.git .
+          git fetch origin
+          git reset --hard origin/main
           "
-
-      - name: Cleanup
-        run: rm -rf ~/.ssh
