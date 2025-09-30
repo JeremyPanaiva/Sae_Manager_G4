@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base Alwaysdata
-$servername = "mysql.alwaysdata.com";  // host Alwaysdata
+$servername = "mysql-432905_jeremy.alwaysdata.net";  // host Alwaysdata
 $username = "432905_jeremy";
 $password = "saemanager-g4!";            // ton mot de passe MySQL
 $dbname = "sae-manager-g4_db";
