@@ -22,6 +22,12 @@ if ($_SERVER['REQUEST_URI'] === '/user/login' && $_SERVER['REQUEST_METHOD'] === 
     exit();
 }
 
+// Gestion de la déconnexion
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    require_once __DIR__ . '/src/Controllers/User/Logout.php';
+    exit();
+}
+
 // Gestion de l’action inscription
 if (isset($_GET['action']) && $_GET['action'] === 'inscription') {
     $view = new \Views\User\InscriptionView();
