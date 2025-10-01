@@ -1,27 +1,15 @@
+<link rel="stylesheet" href="/_assets/css/inscription.css">
+<form action="/src/Controllers/User/LoginPost.php" method="POST">
+<fieldset>
+    <legend>Connexion</legend>
 
+    <label for="uname">Email :</label>
+    <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">
 
-<title>Connection</title>
-<link rel="stylesheet" href="/_assets/css/form.css">
-<form action="/user/login" method="post">
-  <div class="imgcontainer">
-    <img src="/_assets/img/img-avatar.jpeg" alt="Avatar" class="avatar">
-  </div>
+    <label for="psw">Mot de passe :</label>
+    <input type="password" id="psw" name="psw" required placeholder="Votre mot de passe">
 
-  <div class="container">
-    <label for="{{USERNAME_KEY}}"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="{{USERNAME_KEY}}" required>
+    <input type="submit" value="Se connecter" name="ok">
 
-    <label for="{{PASSWORD_KEY}}"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="{{PASSWORD_KEY}}" required>
-
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn"><a href="/">Cancel</a> </button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
+  </fieldset>
 </form>

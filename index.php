@@ -4,16 +4,22 @@ include "Autoloader.php";
 use Controllers\Home\HomeController;
 use Controllers\User\Login;
 use Controllers\User\Register;
-use Controllers\User\LoginPost;
 
-$controllers = [new Login(), new Register(), new LoginPost(), new HomeController()];
+// Liste des contrôleurs basés sur des classes
+$controllers = [new Login(), new Register(), new HomeController()];
 
 // Gestion des routes via les controllers
 foreach ($controllers as $controller) {
-    if($controller::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])){
+    if ($controller::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])) {
         $controller->control();
         exit();
     }
+}
+
+// Gestion des routes procédurales (LoginPost)
+if ($_SERVER['REQUEST_URI'] === '/user/login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/src/Controllers/User/LoginPost.php';
+    exit();
 }
 
 // Gestion de l’action inscription
