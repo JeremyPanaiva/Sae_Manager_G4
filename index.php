@@ -5,7 +5,12 @@ use Controllers\Home\HomeController;
 use Controllers\User\Login;
 use Controllers\User\Register;
 
-// Liste des contrôleurs basés sur des classes
+// Démarrer la session dès le départ
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Liste des contrôleurs basés sur classes
 $controllers = [new Login(), new Register(), new HomeController()];
 
 // Gestion des routes via les controllers
@@ -28,13 +33,19 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     exit();
 }
 
-// Gestion de l’action inscription
+// Gestion de l’inscription (Traitement.php)
 if (isset($_GET['action']) && $_GET['action'] === 'inscription') {
-    $view = new \Views\User\InscriptionView();
-    $view->render();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require_once __DIR__ . '/src/Controllers/User/Traitement.php';
+    } else {
+        // Affichage du formulaire d'inscription
+        $view = new \Views\User\InscriptionView();
+        $view->render();
+    }
     exit();
 }
 
-// Si aucune route trouvée
-echo "Not Found";
+// Page d’accueil par défaut
+$home = new HomeController();
+$home->control();
 exit();

@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout connection">
-      <change afterPath="$PROJECT_DIR$/src/Controllers/User/Logout.php" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout deconextion &#10;plus variable dans le header pour affciher le nom">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_db.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Traitement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Traitement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,24 +43,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/amuhome/p24020247/Bureau/Sae_Manager_G4",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/amuhome/p24020247/Bureau/Sae_Manager_G4&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Controllers/User" />
@@ -93,7 +88,8 @@
       <workItem from="1759262416332" duration="4210000" />
       <workItem from="1759266940518" duration="3342000" />
       <workItem from="1759341061147" duration="17000" />
-      <workItem from="1759341079939" duration="3563000" />
+      <workItem from="1759341079939" duration="3639000" />
+      <workItem from="1759344909651" duration="597000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -207,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759342762826</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ajout deconextion &#10;plus variable dans le header pour affciher le nom">
+      <option name="closed" value="true" />
+      <created>1759344714610</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759344714610</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +222,7 @@
     <MESSAGE value="Ajout workflows" />
     <MESSAGE value="test sql" />
     <MESSAGE value="ajout connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout connection" />
+    <MESSAGE value="ajout deconextion &#10;plus variable dans le header pour affciher le nom" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout deconextion &#10;plus variable dans le header pour affciher le nom" />
   </component>
 </project>
