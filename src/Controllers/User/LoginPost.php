@@ -24,7 +24,8 @@ if (isset($_POST['ok'])) {
         $stmt->fetch();
 
         // ⚠ Ici comparaison directe, à remplacer par password_verify si tu hashes les mots de passe
-        if ($mdp === $storedMdp) {
+        // ⚠ Comparaison avec password_verify si le mot de passe est hashé
+        if (password_verify($mdp, $storedMdp)) {
 
             // Stocker les infos utilisateur dans la session
             $_SESSION['user'] = [
@@ -35,12 +36,12 @@ if (isset($_POST['ok'])) {
 
             // Message succès
             echo '<p style="
-                color: green; 
-                font-size: 24px; 
-                font-weight: bold; 
-                text-align: center; 
-                margin-top: 20%;
-            ">Connexion réussie !</p>';
+        color: green; 
+        font-size: 24px; 
+        font-weight: bold; 
+        text-align: center; 
+        margin-top: 20%;
+    ">Connexion réussie !</p>';
 
             header("refresh:2;url=/"); // redirection vers l'accueil
             exit();
@@ -48,30 +49,19 @@ if (isset($_POST['ok'])) {
         } else {
             // Mot de passe incorrect
             echo '<p style="
-                color: red; 
-                font-size: 24px; 
-                font-weight: bold; 
-                text-align: center; 
-                margin-top: 20%;
-            ">Mot de passe incorrect</p>';
+        color: red; 
+        font-size: 24px; 
+        font-weight: bold; 
+        text-align: center; 
+        margin-top: 20%;
+    ">Mot de passe incorrect</p>';
 
             header("refresh:3;url=/user/login");
             exit();
         }
-    } else {
-        // Email non trouvé
-        echo '<p style="
-            color: red; 
-            font-size: 24px; 
-            font-weight: bold; 
-            text-align: center; 
-            margin-top: 20%;
-        ">Email non trouvé</p>';
 
-        header("refresh:3;url=/user/login");
-        exit();
+
+        $stmt->close();
+        $conn->close();
     }
-
-    $stmt->close();
-    $conn->close();
 }
