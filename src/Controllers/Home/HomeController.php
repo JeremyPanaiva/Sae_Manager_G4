@@ -8,8 +8,7 @@ use Views\Home\HomeView;
 class HomeController implements ControllerInterface
 {
     function control(){
-        $user= new User('Toto', 'pass') ;
-        $view = new HomeView($user);
+        $view = new HomeView();
        echo $view->render();
     }
 

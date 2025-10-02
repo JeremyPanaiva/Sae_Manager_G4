@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Liste des contrôleurs basés sur classes
-$controllers = [new Login(), new Register(), new HomeController(), new \Controllers\User\RegisterPost()];
+$controllers = [new Login(), new Register(), new HomeController(), new \Controllers\User\RegisterPost(), new \Controllers\User\Logout()];
 
 // Gestion des routes via les controllers
 foreach ($controllers as $controller) {
@@ -22,28 +22,6 @@ foreach ($controllers as $controller) {
     }
 }
 
-// Gestion des routes procédurales (LoginPost)
-if ($_SERVER['REQUEST_URI'] === '/user/login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once __DIR__ . '/src/Controllers/User/LoginPost.php';
-    exit();
-}
-
-// Gestion de la déconnexion
-if (isset($_GET['action']) && $_GET['action'] === 'logout') {
-    require_once __DIR__ . '/src/Controllers/User/Logout.php';
-    exit();
-}
-
-// Gestion de l’inscription (Traitement.php)
-if (isset($_GET['action']) && $_GET['action'] === 'inscription') {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once __DIR__ . '/src/Controllers/User/Traitement.php';
-    } else {
-        // Affichage du formulaire d'inscription
-
-    }
-    exit();
-}
 
 // Page d’accueil par défaut
 $home = new HomeController();

@@ -24,7 +24,7 @@ class RegisterPost implements ControllerInterface
             $exceptions = new ValidationException(
                 "mdp" ,
                 "string" ,
-               "Taille mdp invalide il doit etre compris entre 8 et 20",
+                "Invalid password length, it must be between 8 and 20 characters",
 
             );
             $validationsException[] = $exceptions;
@@ -34,7 +34,7 @@ class RegisterPost implements ControllerInterface
 
         try {
             try {
-                $User->register($lastName, $firstName, $email, $mdp);
+                $User->emailExists($email);
 
             }
             catch (EmailAlreadyExistsException $exception) {
@@ -54,7 +54,9 @@ class RegisterPost implements ControllerInterface
 
             $view = new \Views\User\InscriptionView($exceptions->getExceptions());
             echo $view->render();
+            return;
         }
+            $User->register($lastName, $firstName, $email, $mdp);
 
 
 

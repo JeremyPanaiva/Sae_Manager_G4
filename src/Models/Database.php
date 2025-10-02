@@ -6,10 +6,12 @@ class Database {
 
     public static function getConnection() {
         if (self::$conn === null) {
-            $servername = "mysql-sae-manager-g4.alwaysdata.net";
-            $username = "432905_jeremy";
-            $password = "saemanager-g4!";
-            $dbname = "sae-manager-g4_db";
+
+            $servername = self::parseEnvVar("DB_HOST");
+            $username = self::parseEnvVar("DB_USER");
+            $password = self::parseEnvVar("DB_PASSWORD");
+            $dbname = self::parseEnvVar("DB_NAME");
+
 
             self::$conn = new \mysqli($servername, $username, $password, $dbname);
 
@@ -18,5 +20,13 @@ class Database {
             }
         }
         return self::$conn;
+    }
+    static function parseEnvVar(string $envVar)
+    {
+        if (file_exists(__DIR__. '/../../.env')) {
+            $env = parse_ini_file(__DIR__. '/../../.env');
+            return $env[$envVar];
+        }
+        return getenv($envVar);
     }
 }

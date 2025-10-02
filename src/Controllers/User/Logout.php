@@ -1,12 +1,30 @@
 <?php
-session_start();
+namespace Controllers\User;
 
-// Supprimer toutes les données de session
-$_SESSION = [];
+use Controllers\ControllerInterface;
+use Views\Home\HomeView;
 
-// Détruire la session
-session_destroy();
+class Logout implements ControllerInterface
+{
+    public const PATH = "/user/logout";
 
-// Rediriger vers la page d'accueil ou login
-header("Location: /");
-exit();
+    public function control(): void
+    {
+
+
+        $_SESSION = [];
+
+        session_destroy();
+
+
+        header("Location: /");
+        $view = new HomeView();
+        echo $view->render();
+
+    }
+
+    public static function support(string $chemin, string $method): bool
+    {
+        return $chemin === self::PATH && $method === "GET";
+    }
+}

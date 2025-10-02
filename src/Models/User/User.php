@@ -6,21 +6,26 @@ use Models\Database;
 use Shared\Exceptions\EmailAlreadyExistsException;
 
 class User {
+
+    function emailExists(string $email)
+    {
+        $conn = Database::getConnection();
+
+        // Vérifier si l'email existe déjà
+        $checkStmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
+        $checkStmt->bind_param("s", $email);
+        $checkStmt->execute();
+        $checkStmt->store_result();
+
+        if ($checkStmt->num_rows > 0) {
+            error_log(sprintf("E-mail deja utilisé %s", $email));
+            throw new EmailAlreadyExistsException($email);
+
+        }
+    }
    function register($firstName, $lastName, $email, $password): void
    {
        $conn = Database::getConnection();
-
-       // Vérifier si l'email existe déjà
-       $checkStmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
-       $checkStmt->bind_param("s", $email);
-       $checkStmt->execute();
-       $checkStmt->store_result();
-
-       if ($checkStmt->num_rows > 0) {
-           error_log(sprintf("E-mail deja utilisé %s", $email));
-           throw new EmailAlreadyExistsException($email);
-
-       }
 
        error_log(sprintf("Nouveau utilisateur %s %s %s %s", $firstName, $lastName, $email,  $password));
        // Insérer le nouvel utilisateur (mot de passe en clair)
