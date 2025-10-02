@@ -1,22 +1,29 @@
 {{ERRORS_KEY}}
 <link rel="stylesheet" href="/_assets/css/inscription.css">
+<script src="/_assets/script/showPassword.js"></script>
+
 <form action="/user/register" method="POST">
   <fieldset>
     <legend>Inscription</legend>
 
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required placeholder="Votre nom">
 
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
 
-      <label for="mail">Email :</label>
-      <input type="email" id="mail" name="mail" required placeholder="exemple@etu.univ-amu.fr">
+    <label for="mail">Email :</label>
+    <input type="email" id="mail" name="mail" required placeholder="exemple@etu.univ-amu.fr">
 
-      <label for="mdp">Mot de passe :</label>
-      <input type="password" id="mdp" name="mdp" required placeholder="Votre mot de passe">
+    <label for="mdp">Mot de passe :</label>
+    <input type="password" id="mdp" name="mdp" required placeholder="Votre mot de passe">
 
-      <input type="submit" value="S'isncire" name="ok">
+    <!-- Checkbox pour voir le mot de passe -->
+    <label>
+      <input type="checkbox" data-show-password="mdp"> Voir le mot de passe
+    </label>
+
+    <input type="submit" value="S'inscrire" name="ok">
 
   </fieldset>
 </form>

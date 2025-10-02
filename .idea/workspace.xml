@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hashage du mdp" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hashage du mdp">
+      <change afterPath="$PROJECT_DIR$/_assets/script/showPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/inscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/inscription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/connection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/connection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +24,7 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -90,7 +97,7 @@
       <workItem from="1759341079939" duration="3639000" />
       <workItem from="1759344909651" duration="597000" />
       <workItem from="1759385898077" duration="136000" />
-      <workItem from="1759386036362" duration="13381000" />
+      <workItem from="1759386036362" duration="14023000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -244,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759399601988</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="hashage du mdp">
+      <option name="closed" value="true" />
+      <created>1759399609354</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1759399609354</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

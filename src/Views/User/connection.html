@@ -1,15 +1,23 @@
 <link rel="stylesheet" href="/_assets/css/inscription.css">
+<script src="/_assets/script/showPassword.js"></script>
+
 <form action="/src/Controllers/User/LoginPost.php" method="POST">
-<fieldset>
-    <legend>Connexion</legend>
+    <fieldset>
+        <legend>Connexion</legend>
 
-    <label for="uname">Email :</label>
-    <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">
+        <label for="uname">Email :</label>
+        <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">
 
-    <label for="psw">Mot de passe :</label>
-    <input type="password" id="psw" name="psw" required placeholder="Votre mot de passe">
+        <label for="psw">Mot de passe :</label>
+        <input type="password" id="psw" name="psw" required placeholder="Votre mot de passe">
 
-    <input type="submit" value="Se connecter" name="ok">
+        <!-- Checkbox pour voir le mot de passe -->
+        <label>
+            <input type="checkbox" data-show-password="psw"> Voir le mot de passe
+        </label>
 
-  </fieldset>
+        <input type="submit" value="Se connecter" name="ok">
+    </fieldset>
 </form>
+
+

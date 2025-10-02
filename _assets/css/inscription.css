@@ -81,3 +81,24 @@ form input::placeholder {
     color: var(--amu-dark-gray);
     font-style: italic;
 }
+
+
+/* Style de la checkbox "Voir le mot de passe" */
+form input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2); /* rend la case un peu plus grande */
+    cursor: pointer;
+}
+
+form label input[type="checkbox"] {
+    vertical-align: middle;
+}
+
+form label {
+    font-weight: normal; /* pour que le label soit lisible à côté de la checkbox */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    color: var(--amu-dark-gray);
+}
