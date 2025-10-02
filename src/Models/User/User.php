@@ -2,33 +2,41 @@
 
 namespace Models\User;
 
+use Models\Database;
+use Shared\Exceptions\EmailAlreadyExistsException;
+
 class User {
-    private $id;
-    private $nom;
-    private $prenom;
-    private $mail;
-    private $mdp;
+   function register($firstName, $lastName, $email, $password): void
+   {
+       $conn = Database::getConnection();
 
-    public function getId(): int {
-        return $this->id;
-    }
+       // Vérifier si l'email existe déjà
+       $checkStmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
+       $checkStmt->bind_param("s", $email);
+       $checkStmt->execute();
+       $checkStmt->store_result();
 
-    public function getNom(): ?string {
-        return $this->nom;
-    }
+       if ($checkStmt->num_rows > 0) {
+           error_log(sprintf("E-mail deja utilisé %s", $email));
+           throw new EmailAlreadyExistsException($email);
 
-    public function getPrenom(): ?string {
-        return $this->prenom;
-    }
+       }
 
+       error_log(sprintf("Nouveau utilisateur %s %s %s %s", $firstName, $lastName, $email,  $password));
+       // Insérer le nouvel utilisateur (mot de passe en clair)
+       $insertStmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)");
+       $insertStmt->bind_param("ssss", $lastName, $firstName, $email, $password);
+       if ($insertStmt->execute()) {
+           echo "<p style='color:green;'>Inscription réussie ! Vous pouvez maintenant vous connecter.</p>";
+           header("refresh:3;url=/index.php?action=connexion"); // redirection optionnelle
+           exit();
+       } else {
+           echo "<p style='color:red;'>Erreur lors de l'inscription.</p>";
+           exit();
+       }
 
-    public function setNom(string $nom): void {
-        $this->nom = $nom;
-    }
-
-    public function setPrenom(string $prenom): void {
-        $this->prenom = $prenom;
-    }
-
-    // autres setters/getters existants...
+       $checkStmt->close();
+       $insertStmt->close();
+       $conn->close();
+   }
 }

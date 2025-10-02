@@ -5,8 +5,8 @@ use Controllers\ControllerInterface ;
 class Register implements ControllerInterface
 {
     function control(){
-        echo 'Sofien' . '<br>';
-    }
+        $view = new \Views\User\InscriptionView();
+        echo $view->render();    }
 
     static function support(string $chemin, string $method) : bool{
         return $chemin === "/user/register" && $method === "GET";

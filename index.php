@@ -11,11 +11,12 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Liste des contrôleurs basés sur classes
-$controllers = [new Login(), new Register(), new HomeController()];
+$controllers = [new Login(), new Register(), new HomeController(), new \Controllers\User\RegisterPost()];
 
 // Gestion des routes via les controllers
 foreach ($controllers as $controller) {
     if ($controller::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])) {
+        error_log(sprintf("controller utilisé: %s", $controller::class));
         $controller->control();
         exit();
     }
@@ -39,8 +40,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'inscription') {
         require_once __DIR__ . '/src/Controllers/User/Traitement.php';
     } else {
         // Affichage du formulaire d'inscription
-        $view = new \Views\User\InscriptionView();
-        $view->render();
+
     }
     exit();
 }

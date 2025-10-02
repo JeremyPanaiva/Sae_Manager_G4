@@ -9,7 +9,7 @@ class Login implements ControllerInterface
     public const PATH = "/user/login";
     function control(){
         $view = new ConnectionView();
-        $view->render();
+        echo $view->render();
 
     }
 

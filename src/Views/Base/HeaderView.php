@@ -40,7 +40,7 @@ class HeaderView extends AbstractView
         return [
             self::USERNAME_KEY => $username,
             self::LINK_KEY => $link,
-            self::INSCRIPTION_LINK_KEY => '/index.php?action=inscription'
+            self::INSCRIPTION_LINK_KEY => '/user/register',
         ];
     }
 }

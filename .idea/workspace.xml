@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout deconextion &#10;plus variable dans le header pour affciher le nom">
+      <change afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Exceptions/ArrayException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Exceptions/DataBaseException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Exceptions/EmailAlreadyExistsException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Exceptions/ValidationException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Base/ErrorView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Base/ErrorsView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Base/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Base/errors.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Traitement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Traitement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Home/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Home/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/AbstractView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/AbstractView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/BaseView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/BaseView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/InscriptionView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/InscriptionView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/View.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -90,6 +108,8 @@
       <workItem from="1759341061147" duration="17000" />
       <workItem from="1759341079939" duration="3639000" />
       <workItem from="1759344909651" duration="597000" />
+      <workItem from="1759385898077" duration="136000" />
+      <workItem from="1759386036362" duration="7374000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />

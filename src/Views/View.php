@@ -11,5 +11,5 @@ interface View
      */
     function templateKeys(): array;
 
-    function renderBody(): void;
+    function renderBody(): string;
 }

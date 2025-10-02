@@ -10,7 +10,7 @@ class HomeController implements ControllerInterface
     function control(){
         $user= new User('Toto', 'pass') ;
         $view = new HomeView($user);
-        $view->render();
+       echo $view->render();
     }
 
     static function support(string $chemin, string $method) : bool{

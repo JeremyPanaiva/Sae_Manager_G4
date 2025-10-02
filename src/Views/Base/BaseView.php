@@ -18,11 +18,11 @@ abstract class BaseView extends AbstractView
 
     }
 
-    function render(){
-        $this->header = new HeaderView($this->user);
+    function render(): string{
+        $this->header = new HeaderView();
         $this->footer = new FooterView();
-        $this->header->renderBody();
-        $this->renderBody();
+        return $this->header->renderBody().
+        $this->renderBody().
         $this->footer->renderBody();
     }
 

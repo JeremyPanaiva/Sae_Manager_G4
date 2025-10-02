@@ -2,7 +2,7 @@
 namespace Views;
 abstract class AbstractView implements View
 {
-    function renderBody(): void
+    function renderBody(): string
     {
         $template = file_get_contents($this->templatePath());
 
@@ -10,6 +10,6 @@ abstract class AbstractView implements View
             $template = str_replace("{{{$key}}}", $value, $template);
         }
 
-        echo $template ;
+        return $template ;
     }
 }
