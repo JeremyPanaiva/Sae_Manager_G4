@@ -173,6 +173,17 @@ a {
     color: var(--amu-light-blue);
 }
 
+.user-info h2, .main h2, .footer-content h2, .footer-left h3, .footer-right h3 {
+    position: absolute;    /* sr-only pour accessibilité */
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
