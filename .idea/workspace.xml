@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hashage du mdp">
-      <change afterPath="$PROJECT_DIR$/_assets/script/showPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.dist" beforeDir="false" afterPath="$PROJECT_DIR$/.env.dist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/inscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/inscription.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/connection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/connection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Home/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/Home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +97,11 @@
       <workItem from="1759344909651" duration="597000" />
       <workItem from="1759385898077" duration="136000" />
       <workItem from="1759386036362" duration="14023000" />
+      <workItem from="1759827580423" duration="28000" />
+      <workItem from="1759827610750" duration="229000" />
+      <workItem from="1759828506395" duration="20000" />
+      <workItem from="1759860109647" duration="55000" />
+      <workItem from="1759860167516" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
