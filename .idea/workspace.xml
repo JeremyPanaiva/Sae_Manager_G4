@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hashage du mdp">
-      <change beforePath="$PROJECT_DIR$/.env.dist" beforeDir="false" afterPath="$PROJECT_DIR$/.env.dist" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="enlever le html css qui sert a rien">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Home/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/Home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <workItem from="1759827610750" duration="229000" />
       <workItem from="1759828506395" duration="20000" />
       <workItem from="1759860109647" duration="55000" />
-      <workItem from="1759860167516" duration="727000" />
+      <workItem from="1759860167516" duration="2919000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -263,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759399609354</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="enlever le html css qui sert a rien">
+      <option name="closed" value="true" />
+      <created>1759861015216</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1759861015216</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +287,7 @@
     <MESSAGE value="modif &#10;plus ajout verification erreur" />
     <MESSAGE value="securisation bd" />
     <MESSAGE value="hashage du mdp" />
-    <option name="LAST_COMMIT_MESSAGE" value="hashage du mdp" />
+    <MESSAGE value="enlever le html css qui sert a rien" />
+    <option name="LAST_COMMIT_MESSAGE" value="enlever le html css qui sert a rien" />
   </component>
 </project>

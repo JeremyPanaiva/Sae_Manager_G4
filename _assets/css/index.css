@@ -124,6 +124,10 @@ a {
     color: var(--white);
 }
 
+.main {
+    height: 100vh;
+}
+
 .Test  {
     display: flex;
     justify-content: center;
@@ -131,7 +135,43 @@ a {
     font-size: 4rem ;
     color: #b30000;
 }
+.footer {
+    background: var(--amu-blue);
+    color: var(--white);
+    padding: 1.5rem 0;
+    margin-top: 5vh;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
 
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-right a {
+    color: var(--white);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+    color: var(--amu-light-blue);
+}
 
 @media (max-width: 768px) {
     .header-content {
@@ -144,11 +184,9 @@ a {
         justify-content: center;
     }
 
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .main-container {
-        padding: 0 1rem;
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
     }
 }
+
