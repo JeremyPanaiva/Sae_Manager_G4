@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="enlever le html css qui sert a rien">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="w3c">
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,7 @@
       <workItem from="1759827610750" duration="229000" />
       <workItem from="1759828506395" duration="20000" />
       <workItem from="1759860109647" duration="55000" />
-      <workItem from="1759860167516" duration="3924000" />
+      <workItem from="1759860167516" duration="4256000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -293,7 +292,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759863656731</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="w3c">
+      <option name="closed" value="true" />
+      <created>1759864119973</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1759864119973</updated>
+    </task>
+    <task id="LOCAL-00026" summary="w3c">
+      <option name="closed" value="true" />
+      <created>1759864364286</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1759864364286</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +324,7 @@
     <MESSAGE value="securisation bd" />
     <MESSAGE value="hashage du mdp" />
     <MESSAGE value="enlever le html css qui sert a rien" />
-    <option name="LAST_COMMIT_MESSAGE" value="enlever le html css qui sert a rien" />
+    <MESSAGE value="w3c" />
+    <option name="LAST_COMMIT_MESSAGE" value="w3c" />
   </component>
 </project>
