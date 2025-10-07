@@ -11,13 +11,13 @@
 </head>
 <body>
 <header class="header">
-    <section class="header-content">
+    <section class="header-content" aria-label="En-tête de la page">
         <section class="logo">
             <h1 class="logo">
                 <a href="/">📚 SAE Tracker</a>
             </h1>
         </section>
-        <section class="user-info">
+        <section class="user-info" aria-label="Informations utilisateur">
             <p>👤 {{USERNAME_KEY}}</p>
 
             <a href="{{LINK_KEY}}" class="btn btn-outline">{{CONNECTION_LINK_KEY}}</a>
@@ -28,7 +28,7 @@
 </header>
 
 <!-- Navigation -->
-<nav class="nav">
+<nav class="nav" aria-label="Contenu principal">
     <ul class="nav-content">
         <li class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</li>
         <li class="nav-item" onclick="showSection('saes')">Mes SAEs</li>
