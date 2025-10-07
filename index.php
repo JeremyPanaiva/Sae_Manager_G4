@@ -4,14 +4,22 @@ include "Autoloader.php";
 use Controllers\Home\HomeController;
 use Controllers\User\Login;
 use Controllers\User\Register;
+use Controllers\User\ForgotPassword;
 
 // Démarrer la session dès le départ
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Liste des contrôleurs basés sur classes
-$controllers = [new Login(), new Register(), new HomeController(), new \Controllers\User\RegisterPost(), new \Controllers\User\Logout()];
+// Liste des contrôleurs
+$controllers = [
+    new Login(),
+    new Register(),
+    new HomeController(),
+    new \Controllers\User\RegisterPost(),
+    new \Controllers\User\Logout(),
+    new ForgotPassword()
+];
 
 // Gestion des routes via les controllers
 foreach ($controllers as $controller) {
@@ -22,8 +30,7 @@ foreach ($controllers as $controller) {
     }
 }
 
-
-// Page d’accueil par défaut
+// Page d'accueil par défaut
 $home = new HomeController();
 $home->control();
 exit();
