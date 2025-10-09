@@ -42,9 +42,10 @@ Application web permettant le **suivi des SAEs** (Situations d’Apprentissage e
 └── README.md             # Documentation du projet
 ```
 
+#### Ne pas oubliez si vous travaillez en local !  
 
 ```bash
 cp .env.dist .env
 ```
-#### Ne pas oubliez si vous travaillez en local !  
+
 
