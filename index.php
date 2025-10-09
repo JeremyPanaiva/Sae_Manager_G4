@@ -18,7 +18,10 @@ $controllers = [
     new HomeController(),
     new \Controllers\User\RegisterPost(),
     new \Controllers\User\Logout(),
-    new ForgotPassword()
+    new ForgotPassword(),
+    new \Controllers\User\ForgotPasswordPost(),
+    new \Controllers\User\ForgotPassword(),
+    new \Controllers\User\ForgotPassword()
 ];
 
 // Gestion des routes via les controllers
@@ -29,6 +32,10 @@ foreach ($controllers as $controller) {
         exit();
     }
 }
+
+require_once __DIR__ . '/src/Controllers/User/ForgotPasswordPost.php';
+require_once __DIR__ . '/src/Controllers/User/ResetPassword.php';
+require_once __DIR__ . '/src/Controllers/User/ResetPasswordPost.php';
 
 // Page d'accueil par défaut
 $home = new HomeController();
