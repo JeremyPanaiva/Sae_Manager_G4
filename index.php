@@ -33,9 +33,6 @@ foreach ($controllers as $controller) {
     }
 }
 
-require_once __DIR__ . '/src/Controllers/User/ForgotPasswordPost.php';
-require_once __DIR__ . '/src/Controllers/User/ResetPassword.php';
-require_once __DIR__ . '/src/Controllers/User/ResetPasswordPost.php';
 
 // Page d'accueil par défaut
 $home = new HomeController();
