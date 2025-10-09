@@ -46,6 +46,5 @@ Application web permettant le **suivi des SAEs** (Situations d’Apprentissage e
 ```bash
 cp .env.dist .env
 ```
-
-Demandez aux copaings 
+# Ne pas oubliez si vous travaillez en local !  
 
