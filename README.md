@@ -49,9 +49,11 @@ Application web permettant le **suivi des SAEs** (Situations d’Apprentissage e
 ```bash
 cp .env.dist .env
 ```
+---
 
 ## Sources
 
-**aka dev** : [https://www.youtube.com/@akdevyt](https://www.youtube.com/@akdevyt)
+- **aka dev** : [https://www.youtube.com/@akdevyt](https://www.youtube.com/@akdevyt).
+- **Ia Intrgrée phpstorm**
 
 
