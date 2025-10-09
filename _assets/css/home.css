@@ -1,6 +1,6 @@
 /* ======== Styles généraux ======== */
 body {
-    background-color: #e0e4ea; /* fond légèrement plus foncé pour meilleur contraste */
+    background-color: #e0e4ea;
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -16,38 +16,47 @@ body {
     animation: fadeIn 1.2s ease-in-out;
 }
 
-/* ======== Titre principal ======== */
+/* ======== Titre principal (effet gradient) ======== */
 .title {
     font-size: 6rem;
     font-weight: 800;
-    color: #003366; /* bleu foncé pour bon contraste */
     letter-spacing: 3px;
     margin: 0;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2),
-                 -2px -2px 8px rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, #0077ff, #00d4ff, #00ffaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* rend le texte transparent pour afficher le gradient */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-.title span {
-    color: #0055aa; /* bleu légèrement plus clair mais contrasté */
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+.title:hover {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.25);
 }
 
-.title:hover {
-    transform: scale(1.03);
-    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+/* Variante : animation subtile du gradient */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.title {
+    background-size: 200% 200%;
+    animation: gradientMove 6s ease infinite;
 }
 
 /* ======== Sous-titre ======== */
 .subtitle {
     font-size: 1.6rem;
-    color: #333333; /* gris foncé pour contraste */
+    color: #222;
     margin-top: 1.5rem;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
     font-weight: 400;
 }
 
-/* ======== Animation ======== */
+/* ======== Animation d'apparition ======== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -59,17 +68,13 @@ body {
     }
 }
 
-/* ======== Responsive pour écrans plus petits ======== */
+/* ======== Responsive ======== */
 @media (max-width: 768px) {
     .title {
         font-size: 4rem;
         display: flex;
         flex-direction: column;
         line-height: 1.2;
-    }
-
-    .title span {
-        display: block;
         text-align: center;
     }
 
