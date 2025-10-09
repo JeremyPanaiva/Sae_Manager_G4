@@ -16,6 +16,7 @@ jobs:
         with:
           host: ssh-sae-manager-g4.alwaysdata.net
           username: sae-manager-g4
+          key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/sae-manager-g4/www/Sae_Manager_G4
             echo "🔄 Pulling latest code..."
