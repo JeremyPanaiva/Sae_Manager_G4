@@ -40,6 +40,7 @@ Application web permettant le **suivi des SAEs** (Situations d’Apprentissage e
 ├── robots.txt            # Directives pour les robots d’indexation
 ├── sitemap.xml           # Plan du site pour le référencement
 └── README.md             # Documentation du projet
+```
 
 
 ```bash
