@@ -1,69 +1,66 @@
 <?php
 namespace Controllers\User;
 
-use Controllers\ControllerInterface ;
-use Models\Database;
+use Controllers\ControllerInterface;
 use Models\User\User;
-use Shared\Exceptions\EmailAlreadyExistsException;
-use Shared\Exceptions\ValidationException;
 use Shared\Exceptions\ArrayException;
+use Shared\Exceptions\ValidationException;
+use Shared\Exceptions\EmailAlreadyExistsException;
+use Shared\Exceptions\DataBaseException;
+use Views\User\InscriptionView;
 
 class RegisterPost implements ControllerInterface
 {
-    function control(){
-        if (isset($_POST['ok'])) {
-            $lastName    = $_POST['nom'] ?? '';
-            $firstName = $_POST['prenom'] ?? '';
-            $email   = $_POST['mail'] ?? '';
-            $mdp    = $_POST['mdp'] ?? '';
+    function control()
+    {
+        if (!isset($_POST['ok'])) return;
 
-        $User = new User() ;
+        $lastName  = $_POST['nom'] ?? '';
+        $firstName = $_POST['prenom'] ?? '';
+        $email     = $_POST['mail'] ?? '';
+        $mdp       = $_POST['mdp'] ?? '';
 
-        $validationsException = array();
-        if (strlen($mdp) < 8 || strlen($mdp) > 20 ) {
-            $exceptions = new ValidationException(
-                "mdp" ,
-                "string" ,
-                "Invalid password length, it must be between 8 and 20 characters",
+        $User = new User();
+        $validationExceptions = [];
 
+        // 1️⃣ Vérifie longueur mot de passe
+        if (strlen($mdp) < 8 || strlen($mdp) > 20) {
+            $validationExceptions[] = new ValidationException(
+                "mdp", "string", "Le mot de passe doit contenir entre 8 et 20 caractères."
             );
-            $validationsException[] = $exceptions;
-
-
         }
 
         try {
+            // 2️⃣ Vérifie la BDD en priorité
             try {
                 $User->emailExists($email);
+            } catch (DataBaseException $dbEx) {
+                throw new ArrayException([$dbEx]);
+            } catch (EmailAlreadyExistsException $e) {
+                $validationExceptions[] = new ValidationException("mail", "string", $e->getMessage());
+            }
 
+            // 3️⃣ Si des erreurs de validation
+            if (count($validationExceptions) > 0) {
+                throw new ArrayException($validationExceptions);
             }
-            catch (EmailAlreadyExistsException $exception) {
-                $exceptions = new ValidationException(
-                  "mail" ,
-                  "string" ,
-                   $exception->getMessage(),
-                );
-                $validationsException[] = $exception;
-            }
-            if(count($validationsException) > 0){
-                throw new ArrayException($validationsException);
-            }
+
+            // 4️⃣ Inscription
+            $User->register($lastName, $firstName, $email, $mdp);
+
+            // 5️⃣ Redirection ou message de succès
+            header("Location: /user/login");
+            exit();
 
         } catch (ArrayException $exceptions) {
-
-            $view = new \Views\User\InscriptionView($exceptions->getExceptions());
+            $view = new InscriptionView($exceptions->getExceptions());
             echo $view->render();
             return;
         }
-            $User->register($lastName, $firstName, $email, $mdp);
-
-
-
-        }
     }
 
-    static function support(string $chemin, string $method) : bool{
+    static function support(string $chemin, string $method): bool
+    {
         return $chemin === "/user/register" && $method === "POST";
     }
-
 }

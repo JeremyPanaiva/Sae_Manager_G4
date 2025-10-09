@@ -7,77 +7,73 @@ use Shared\Exceptions\ArrayException;
 use Shared\Exceptions\ValidationException;
 use Shared\Exceptions\EmailNotFoundException;
 use Shared\Exceptions\InvalidPasswordException;
+use Shared\Exceptions\DataBaseException;
 use Views\User\ConnectionView;
 
 class LoginPost implements ControllerInterface
 {
     function control()
     {
-        if (isset($_POST['ok'])) {
-            $email = $_POST['uname'] ?? '';
-            $mdp   = $_POST['psw'] ?? '';
+        if (!isset($_POST['ok'])) return;
 
-            $User = new User();
-            $validationExceptions = [];
+        $email = $_POST['uname'] ?? '';
+        $mdp   = $_POST['psw'] ?? '';
 
-            // Vérifie si l'email est vide ou invalide
-            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $validationExceptions[] = new ValidationException(
-                    "mail",
-                    "string",
-                    "Email invalide."
-                );
+        $User = new User();
+        $validationExceptions = [];
+
+        // 1️⃣ Vérifie email vide ou invalide
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $validationExceptions[] = new ValidationException("mail", "string", "Email invalide.");
+        }
+
+        // 2️⃣ Vérifie mot de passe vide
+        if (empty($mdp)) {
+            $validationExceptions[] = new ValidationException("mdp", "string", "Le mot de passe ne peut pas être vide.");
+        }
+
+        try {
+            // 3️⃣ Si des erreurs de validation locales
+            if (count($validationExceptions) > 0) {
+                throw new ArrayException($validationExceptions);
             }
 
-            // Vérifie si le mot de passe est vide
-            if (empty($mdp)) {
-                $validationExceptions[] = new ValidationException(
-                    "mdp",
-                    "string",
-                    "Le mot de passe ne peut pas être vide."
-                );
-            }
-
+            // 4️⃣ Vérifie la BDD en priorité
             try {
-                //  Si erreurs de validation
-                if (count($validationExceptions) > 0) {
-                    throw new ArrayException($validationExceptions);
-                }
-
-                //  Vérifie si l'utilisateur existe en base
                 $userData = $User->findByEmail($email);
-
-                if (!$userData) {
-                    $validationExceptions[] = new EmailNotFoundException($email);
-                    throw new ArrayException($validationExceptions);
-                }
-
-                // Vérifie le mot de passe
-                if (!password_verify($mdp, $userData['mdp'])) {
-                    $validationExceptions[] = new InvalidPasswordException();
-                    throw new ArrayException($validationExceptions);
-                }
-
-                // Connexion réussie
-                if (session_status() === PHP_SESSION_NONE) {
-                    session_start();
-                }
-
-                $_SESSION['user'] = [
-                    'id'      => $userData['id'],
-                    'nom'     => $userData['nom'],
-                    'prenom'  => $userData['prenom']
-                ];
-
-                header("Location: /");
-                exit();
-
-            } catch (ArrayException $exceptions) {
-                // Erreurs → reste sur la page de connexion
-                $view = new ConnectionView($exceptions->getExceptions());
-                echo $view->render();
-                return;
+            } catch (DataBaseException $dbEx) {
+                throw new ArrayException([$dbEx]);
             }
+
+            // 5️⃣ Email non trouvé
+            if (!$userData) {
+                throw new ArrayException([new EmailNotFoundException($email)]);
+            }
+
+            // 6️⃣ Vérifie mot de passe
+            if (!password_verify($mdp, $userData['mdp'])) {
+                throw new ArrayException([new InvalidPasswordException()]);
+            }
+
+            // 7️⃣ Connexion réussie
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION['user'] = [
+                'id'     => $userData['id'],
+                'nom'    => $userData['nom'],
+                'prenom' => $userData['prenom']
+            ];
+
+            header("Location: /");
+            exit();
+
+        } catch (ArrayException $exceptions) {
+            // Affiche les erreurs sur la vue
+            $view = new ConnectionView($exceptions->getExceptions());
+            echo $view->render();
+            return;
         }
     }
 
