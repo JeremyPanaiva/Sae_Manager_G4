@@ -1,0 +1,57 @@
+body {
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.main-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.title {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #0056b3;
+    letter-spacing: 3px;
+    margin: 0;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15),
+    -2px -2px 8px rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.title span {
+    color: #0099ff;
+    text-shadow: 3px 3px 10px rgba(0, 153, 255, 0.3);
+}
+
+.title:hover {
+    transform: scale(1.03);
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    color: #333;
+    margin-top: 1.5rem;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 400;
+}
+
+/* Animation douce d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
