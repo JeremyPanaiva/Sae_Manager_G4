@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="Gestion propres de tout les erreurs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Exceptions/DataBaseException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Exceptions/DataBaseException.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +113,7 @@
       <workItem from="1760036574316" duration="27000" />
       <workItem from="1760036611322" duration="4267000" />
       <workItem from="1760041388183" duration="244000" />
+      <workItem from="1760044299543" duration="336000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />

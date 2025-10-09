@@ -40,7 +40,7 @@ class RegisterPost implements ControllerInterface
                 $validationExceptions[] = new ValidationException("mail", "string", $e->getMessage());
             }
 
-            // 3️⃣ Si des erreurs de validation
+
             if (count($validationExceptions) > 0) {
                 throw new ArrayException($validationExceptions);
             }

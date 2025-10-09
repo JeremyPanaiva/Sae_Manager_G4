@@ -37,7 +37,7 @@ class User
         }
 
         $stmt->close();
-        // ❌ Ne PAS fermer $conn ici
+        // ❌ Ne pas fermer $conn ici
     }
 
     /**
@@ -63,7 +63,7 @@ class User
         $stmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword);
         $stmt->execute();
         $stmt->close();
-        // ❌ Ne PAS fermer $conn ici
+        // ❌ Ne pas fermer $conn ici
     }
 
     /**
@@ -87,11 +87,65 @@ class User
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
+
         $user = $result->fetch_assoc() ?: null;
 
         $stmt->close();
-        // ❌ Ne PAS fermer $conn ici
+        // ❌ Ne pas fermer $conn ici
 
         return $user;
+    }
+
+    /**
+     * Récupère une liste d'utilisateurs paginée
+     *
+     * @throws DataBaseException
+     */
+    public function getUsersPaginated(int $limit, int $offset): array
+    {
+        try {
+            $conn = Database::getConnection();
+        } catch (\Throwable $e) {
+            throw new DataBaseException("Unable to connect to the database.");
+        }
+
+        $stmt = $conn->prepare("SELECT id, nom, prenom, mail FROM users ORDER BY date_creation ASC LIMIT ? OFFSET ?");
+        if (!$stmt) {
+            throw new DataBaseException("SQL prepare failed in getUsersPaginated.");
+        }
+
+        $stmt->bind_param("ii", $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $users = [];
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+
+        $stmt->close();
+        return $users;
+    }
+
+    /**
+     * Compte le nombre total d'utilisateurs
+     *
+     * @throws DataBaseException
+     */
+    public function countUsers(): int
+    {
+        try {
+            $conn = Database::getConnection();
+        } catch (\Throwable $e) {
+            throw new DataBaseException("Unable to connect to the database.");
+        }
+
+        $result = $conn->query("SELECT COUNT(*) AS total FROM users");
+        if (!$result) {
+            throw new DataBaseException("SQL query failed in countUsers.");
+        }
+
+        $count = $result->fetch_assoc()['total'];
+        return $count;
     }
 }
