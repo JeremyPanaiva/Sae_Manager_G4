@@ -19,12 +19,12 @@ class User
         try {
             $conn = Database::getConnection();
         } catch (\Throwable $e) {
-            throw new DataBaseException("Impossible de se connecter à la base de données.");
+            throw new DataBaseException("Unable to connect to the database.");
         }
 
         $stmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
         if (!$stmt) {
-            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (emailExists).");
+            throw new DataBaseException("SQL prepare failed in emailExists.");
         }
 
         $stmt->bind_param("s", $email);
@@ -37,7 +37,7 @@ class User
         }
 
         $stmt->close();
-        $conn->close();
+        // ❌ Ne PAS fermer $conn ici
     }
 
     /**
@@ -45,27 +45,25 @@ class User
      *
      * @throws DataBaseException
      */
-    public function register(string $lastName, string $firstName, string $email, string $password): void
+    public function register(string $firstName, string $lastName, string $email, string $password): void
     {
         try {
             $conn = Database::getConnection();
         } catch (\Throwable $e) {
-            throw new DataBaseException("Impossible de se connecter à la base de données.");
+            throw new DataBaseException("Unable to connect to the database.");
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)");
         if (!$stmt) {
-            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (register).");
+            throw new DataBaseException("SQL prepare failed in register.");
         }
 
-        if (!$stmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword) || !$stmt->execute()) {
-            throw new DataBaseException("Erreur lors de l’exécution de la requête SQL (register).");
-        }
-
+        $stmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword);
+        $stmt->execute();
         $stmt->close();
-        $conn->close();
+        // ❌ Ne PAS fermer $conn ici
     }
 
     /**
@@ -78,22 +76,21 @@ class User
         try {
             $conn = Database::getConnection();
         } catch (\Throwable $e) {
-            throw new DataBaseException("Impossible de se connecter à la base de données.");
+            throw new DataBaseException("Unable to connect to the database.");
         }
 
         $stmt = $conn->prepare("SELECT id, mdp, nom, prenom, mail FROM users WHERE mail = ?");
         if (!$stmt) {
-            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (findByEmail).");
+            throw new DataBaseException("SQL prepare failed in findByEmail.");
         }
 
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
         $user = $result->fetch_assoc() ?: null;
 
         $stmt->close();
-        $conn->close();
+        // ❌ Ne PAS fermer $conn ici
 
         return $user;
     }

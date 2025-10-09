@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="gestion ereur">
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="Gestion propres de tout les erreurs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Exceptions/DataBaseException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Exceptions/DataBaseException.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +111,8 @@
       <workItem from="1760020311621" duration="98000" />
       <workItem from="1760022545967" duration="1165000" />
       <workItem from="1760036574316" duration="27000" />
-      <workItem from="1760036611322" duration="4016000" />
+      <workItem from="1760036611322" duration="4267000" />
+      <workItem from="1760041388183" duration="244000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -401,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760040855190</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Gestion propres de tout les erreurs">
+      <option name="closed" value="true" />
+      <created>1760041010242</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1760041010242</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,6 +431,7 @@
     <MESSAGE value="ajout liste users" />
     <MESSAGE value="deploy" />
     <MESSAGE value="gestion ereur" />
-    <option name="LAST_COMMIT_MESSAGE" value="gestion ereur" />
+    <MESSAGE value="Gestion propres de tout les erreurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestion propres de tout les erreurs" />
   </component>
 </project>
