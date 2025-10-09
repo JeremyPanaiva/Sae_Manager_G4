@@ -30,7 +30,7 @@ class UserListView extends BaseView {
         // Génération des lignes du tableau
         $rowsHtml = '';
         foreach ($this->users as $user) {
-            $rowsHtml .= "<tr><td>{$user['nom']}</td><td>{$user['prenom']}</td></tr>";
+            $rowsHtml .= "<tr><td>{$user['prenom']}</td><td>{$user['nom']}</td></tr>";
         }
 
         return [
