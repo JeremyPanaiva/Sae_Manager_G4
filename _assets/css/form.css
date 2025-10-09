@@ -1,5 +1,4 @@
-/* Mise en page générale */
-/* Style du formulaire */
+/* ======== Mise en page générale ======== */
 form {
     background-color: #fff;
     width: 350px;
@@ -11,7 +10,7 @@ form {
     margin-top: 4%;
 }
 
-/* Avatar */
+/* ======== Avatar ======== */
 .imgcontainer {
     text-align: center;
 }
@@ -22,7 +21,7 @@ img.avatar {
     border: 3px solid #0984e3;
 }
 
-/* Conteneur des champs */
+/* ======== Conteneur des champs ======== */
 .container {
     display: flex;
     flex-direction: column;
@@ -31,7 +30,7 @@ img.avatar {
 label {
     margin: 8px 0 4px;
     font-weight: bold;
-    color: #333;
+    color: #111; /* couleur plus foncée pour meilleur contraste */
 }
 
 /* Champs texte */
@@ -54,7 +53,7 @@ input[type="password"]:focus {
 /* Bouton principal */
 button[type="submit"] {
     background-color: #0984e3;
-    color: white;
+    color: #fff;
     padding: 12px;
     margin-top: 10px;
     border: none;
@@ -65,13 +64,13 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #74b9ff;
+    background-color: #0652dd; /* un bleu plus foncé pour le hover */
 }
 
 /* Bouton annuler */
 .cancelbtn {
     background-color: #d63031;
-    color: white;
+    color: #fff;
     padding: 12px;
     border: none;
     border-radius: 8px;
@@ -81,7 +80,7 @@ button[type="submit"]:hover {
 }
 
 .cancelbtn:hover {
-    background-color: #ff7675;
+    background-color: #b71c1c;
 }
 
 /* Section bas du formulaire */
@@ -96,7 +95,7 @@ button[type="submit"]:hover {
 }
 
 .psw a {
-    color: #0984e3;
+    color: #0652dd; /* lien plus foncé pour contraste suffisant */
     text-decoration: none;
 }
 
@@ -104,8 +103,35 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Animation */
+/* ======== Animation ======== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 20px;
+        margin-top: 10%;
+    }
+
+    img.avatar {
+        width: 80px;
+        border-width: 2px;
+    }
+
+    button[type="submit"],
+    .cancelbtn {
+        width: 100%;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .container:last-of-type {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 }
