@@ -59,20 +59,21 @@ body {
 /* Pour les écrans plus petits */
 @media (max-width: 768px) {
     .title {
-        font-size: 4rem; /* réduit un peu la taille pour mobile */
+        font-size: 4rem;
         display: flex;
-        flex-direction: column; /* met les enfants en colonne */
+        flex-direction: column;
         line-height: 1.2;
     }
 
     .title span {
-        display: block; /* force MANAGER à aller à la ligne */
-        text-align: center; /* centrer le texte */
+        display: block;
+        text-align: center;
     }
+
     .subtitle {
-        font-size: 1.2rem; /* réduit la taille pour les écrans plus petits */
-        margin-top: 1rem;  /* un peu moins d'espace au-dessus */
-        padding: 0 1rem;   /* padding horizontal pour éviter que le texte touche les bords */
-        text-align: center; /* centré sur mobile */
-   
-}
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        padding: 0 1rem;
+        text-align: center;
+    } 
+} 
