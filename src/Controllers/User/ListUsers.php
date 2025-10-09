@@ -20,8 +20,7 @@ class ListUsers
         $userModel = new User();
         $header = new HeaderView();
 
-        // Pagination
-        $limit = 10;
+        $limit = 10; // a modifier plus tard pour choisir sa limite
         $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
         $offset = ($currentPage - 1) * $limit;
 
