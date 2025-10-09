@@ -27,13 +27,17 @@
     </section>
 </header>
 
+
 <!-- Navigation -->
 <nav class="nav" aria-label="Contenu principal">
     <ul class="nav-content">
         <li class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</li>
         <li class="nav-item" onclick="showSection('saes')">Mes SAEs</li>
         <li class="nav-item" onclick="showSection('calendar')">Calendrier</li>
-        <li class="nav-item" onclick="showSection('competences')">Compétences</li>
+        <li class="nav-item">
+            <a href="{{USERS_LINK_KEY}}">Utilisateurs</a>
+        </li>
+
         <li class="nav-item" onclick="showSection('notifications')">Notifications</li>
     </ul>
 </nav>

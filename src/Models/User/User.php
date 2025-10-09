@@ -46,4 +46,32 @@ class User {
         $insertStmt->close();
         $conn->close();
     }
+
+    public function getUsersPaginated(int $limit, int $offset): array
+    {
+        $conn = Database::getConnection();
+        $stmt = $conn->prepare("SELECT nom, prenom FROM users ORDER BY date_creation asc LIMIT ? OFFSET ?");
+        $stmt->bind_param("ii", $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $users = [];
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+
+        $stmt->close();
+
+        return $users;
+    }
+
+    public function countUsers(): int
+    {
+        $conn = Database::getConnection();
+        $result = $conn->query("SELECT COUNT(*) AS total FROM users");
+        $count = $result->fetch_assoc()['total'];
+        // ❌ Ne pas fermer la connexion ici non plus
+        return $count;
+    }
+
 }

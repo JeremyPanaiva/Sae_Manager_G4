@@ -5,6 +5,7 @@ use Controllers\Home\HomeController;
 use Controllers\User\Login;
 use Controllers\User\Register;
 use Controllers\User\ForgotPassword;
+use Controllers\User\ListUsers; // 👈 ajoute ceci
 
 // Démarrer la session dès le départ
 if (session_status() === PHP_SESSION_NONE) {
@@ -18,12 +19,16 @@ $controllers = [
     new HomeController(),
     new \Controllers\User\RegisterPost(),
     new \Controllers\User\Logout(),
-    new ForgotPassword()
+    new ForgotPassword(),
+    new ListUsers(), // 👈 ajoute ton contrôleur ici
 ];
+
+// Récupérer uniquement le chemin (sans query string)
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Gestion des routes via les controllers
 foreach ($controllers as $controller) {
-    if ($controller::support($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])) {
+    if ($controller::support($path, $_SERVER['REQUEST_METHOD'])) {
         error_log(sprintf("controller utilisé: %s", $controller::class));
         $controller->control();
         exit();

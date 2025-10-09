@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment=".env a avoir pas completer">
+      <change afterPath="$PROJECT_DIR$/_assets/css/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/User/ListUsers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/User/UserListView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/User/UserListView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/connection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/connection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/UserView.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -107,6 +113,8 @@
       <workItem from="1759993335006" duration="1190000" />
       <workItem from="1759999018836" duration="44000" />
       <workItem from="1759999066468" duration="479000" />
+      <workItem from="1760009952772" duration="694000" />
+      <workItem from="1760010648760" duration="3903000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
