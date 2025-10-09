@@ -56,6 +56,6 @@ cp .env.dist .env
 
 ## Sources
 
-aka dev : [https://www.youtube.com/@akdevyt]
-https://www.youtube.com/@akdevyt
+**aka dev** : [https://www.youtube.com/@akdevyt](https://www.youtube.com/@akdevyt)
+
 
