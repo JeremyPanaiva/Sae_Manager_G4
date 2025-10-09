@@ -2,7 +2,12 @@
 
 namespace Shared\Exceptions;
 
-class DataBaseException
+use RuntimeException;
+
+class DataBaseException extends RuntimeException
 {
- //a implementer manque de temps
+    public function __construct(string $message = "Erreur de connexion à la base de données.")
+    {
+        parent::__construct($message);
+    }
 }

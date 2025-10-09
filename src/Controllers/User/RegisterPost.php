@@ -38,12 +38,11 @@ class RegisterPost implements ControllerInterface
 
             }
             catch (EmailAlreadyExistsException $exception) {
-//                $exceptions = new ValidationException(
-//                    "mail" ,
-//                    "string" ,
-//                    $exception->getMessage(),
-//
-//                );
+                $exceptions = new ValidationException(
+                  "mail" ,
+                  "string" ,
+                   $exception->getMessage(),
+                );
                 $validationsException[] = $exception;
             }
             if(count($validationsException) > 0){

@@ -2,76 +2,99 @@
 
 namespace Models\User;
 
-
 use Models\Database;
 use Shared\Exceptions\EmailAlreadyExistsException;
+use Shared\Exceptions\DataBaseException;
 
-class User {
-
-    function emailExists(string $email)
+class User
+{
+    /**
+     * Vérifie si un email existe déjà
+     *
+     * @throws EmailAlreadyExistsException
+     * @throws DataBaseException
+     */
+    public function emailExists(string $email): void
     {
-        $conn = Database::getConnection();
+        try {
+            $conn = Database::getConnection();
+        } catch (\Throwable $e) {
+            throw new DataBaseException("Impossible de se connecter à la base de données.");
+        }
 
-        $checkStmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
-        $checkStmt->bind_param("s", $email);
-        $checkStmt->execute();
-        $checkStmt->store_result();
+        $stmt = $conn->prepare("SELECT id FROM users WHERE mail = ?");
+        if (!$stmt) {
+            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (emailExists).");
+        }
 
-        if ($checkStmt->num_rows > 0) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->close();
             throw new EmailAlreadyExistsException($email);
         }
 
-        $checkStmt->close();
-    }
-
-    function register($firstName, $lastName, $email, $password): void
-    {
-        $conn = Database::getConnection();
-
-        // Hasher le mot de passe
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $insertStmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)");
-        $insertStmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword);
-
-        if ($insertStmt->execute()) {
-            echo "<p style='color:green;'>Inscription réussie ! Vous pouvez maintenant vous connecter.</p>";
-            header("refresh:3;url=/index.php?action=connexion");
-            exit();
-        } else {
-            echo "<p style='color:red;'>Erreur lors de l'inscription.</p>";
-            exit();
-        }
-
-        $insertStmt->close();
+        $stmt->close();
         $conn->close();
     }
 
-    public function getUsersPaginated(int $limit, int $offset): array
+    /**
+     * Enregistre un nouvel utilisateur
+     *
+     * @throws DataBaseException
+     */
+    public function register(string $lastName, string $firstName, string $email, string $password): void
     {
-        $conn = Database::getConnection();
-        $stmt = $conn->prepare("SELECT nom, prenom FROM users ORDER BY date_creation asc LIMIT ? OFFSET ?");
-        $stmt->bind_param("ii", $limit, $offset);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        try {
+            $conn = Database::getConnection();
+        } catch (\Throwable $e) {
+            throw new DataBaseException("Impossible de se connecter à la base de données.");
+        }
 
-        $users = [];
-        while ($row = $result->fetch_assoc()) {
-            $users[] = $row;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)");
+        if (!$stmt) {
+            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (register).");
+        }
+
+        if (!$stmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword) || !$stmt->execute()) {
+            throw new DataBaseException("Erreur lors de l’exécution de la requête SQL (register).");
         }
 
         $stmt->close();
-
-        return $users;
+        $conn->close();
     }
 
-    public function countUsers(): int
+    /**
+     * Récupère un utilisateur par email
+     *
+     * @throws DataBaseException
+     */
+    public function findByEmail(string $email): ?array
     {
-        $conn = Database::getConnection();
-        $result = $conn->query("SELECT COUNT(*) AS total FROM users");
-        $count = $result->fetch_assoc()['total'];
-        // ❌ Ne pas fermer la connexion ici non plus
-        return $count;
-    }
+        try {
+            $conn = Database::getConnection();
+        } catch (\Throwable $e) {
+            throw new DataBaseException("Impossible de se connecter à la base de données.");
+        }
 
+        $stmt = $conn->prepare("SELECT id, mdp, nom, prenom, mail FROM users WHERE mail = ?");
+        if (!$stmt) {
+            throw new DataBaseException("Erreur lors de la préparation de la requête SQL (findByEmail).");
+        }
+
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $user = $result->fetch_assoc() ?: null;
+
+        $stmt->close();
+        $conn->close();
+
+        return $user;
+    }
 }

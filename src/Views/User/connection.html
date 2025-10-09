@@ -2,9 +2,11 @@
 <script src="/_assets/script/showPassword.js"></script>
 <section class="main" aria-label="Contenu principal">
 
-<form action="/src/Controllers/User/LoginPost.php" method="POST">
+    <form method="POST" action="/user/login">
+
     <fieldset>
         <legend>Connexion</legend>
+        {{ERRORS_KEY}}
 
         <label for="uname">Email :</label>
         <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">

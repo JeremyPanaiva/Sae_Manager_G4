@@ -20,7 +20,7 @@ class ListUsers
         $userModel = new User();
         $header = new HeaderView();
 
-        $limit = 10; // a modifier plus tard pour choisir sa limite
+        $limit = 10; // a modifier plus tard pour choisir sa limite voir un variable ^pur laisser le choix l'user 
         $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
         $offset = ($currentPage - 1) * $limit;
 

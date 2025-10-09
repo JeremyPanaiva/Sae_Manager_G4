@@ -1,11 +1,17 @@
 <?php
-include "Autoloader.php";
+// Inclure l'autoloader
+require_once "Autoloader.php";
+\Autoloader::register();
 
+// Importer les controllers
 use Controllers\Home\HomeController;
 use Controllers\User\Login;
+use Controllers\User\LoginPost;
 use Controllers\User\Register;
+use Controllers\User\RegisterPost;
+use Controllers\User\Logout;
 use Controllers\User\ForgotPassword;
-use Controllers\User\ListUsers; // 👈 ajoute ceci
+use Controllers\User\ListUsers;
 
 // Démarrer la session dès le départ
 if (session_status() === PHP_SESSION_NONE) {
@@ -14,28 +20,30 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Liste des contrôleurs
 $controllers = [
-    new Login(),
-    new Register(),
     new HomeController(),
-    new \Controllers\User\RegisterPost(),
-    new \Controllers\User\Logout(),
+    new Login(),
+    new LoginPost(),
+    new Register(),
+    new RegisterPost(),
+    new Logout(),
     new ForgotPassword(),
-    new ListUsers(), // 👈 ajoute ton contrôleur ici
+    new ListUsers(),
 ];
 
-// Récupérer uniquement le chemin (sans query string)
+// Récupérer uniquement le chemin de l'URL (sans query string)
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$method = $_SERVER['REQUEST_METHOD'];
 
-// Gestion des routes via les controllers
+// Parcourir les contrôleurs et exécuter celui qui supporte la route
 foreach ($controllers as $controller) {
-    if ($controller::support($path, $_SERVER['REQUEST_METHOD'])) {
-        error_log(sprintf("controller utilisé: %s", $controller::class));
+    if ($controller::support($path, $method)) {
+        error_log(sprintf("Controller utilisé: %s", $controller::class));
         $controller->control();
         exit();
     }
 }
 
-// Page d'accueil par défaut
+// Page d'accueil par défaut si aucun contrôleur ne correspond
 $home = new HomeController();
 $home->control();
 exit();
