@@ -55,3 +55,18 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Pour les écrans plus petits */
+@media (max-width: 768px) {
+    .title {
+        font-size: 4rem; /* réduit un peu la taille pour mobile */
+        display: flex;
+        flex-direction: column; /* met les enfants en colonne */
+        line-height: 1.2;
+    }
+
+    .title span {
+        display: block; /* force MANAGER à aller à la ligne */
+        text-align: center; /* centrer le texte */
+    }
+}
