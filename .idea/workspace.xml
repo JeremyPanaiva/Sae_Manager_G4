@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hmtl">
-      <change afterPath="$PROJECT_DIR$/_assets/css/legal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_assets/css/plan.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Legal/MentionsLegalesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Legal/PlanDuSiteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Legal/MentionsLegalesView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Legal/PlanDuSiteView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Legal/mentions-legales.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Legal/plan-du-site.html" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout page plan du site et mentions legales">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/FooterView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/FooterView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/legal.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/legal.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +115,7 @@
       <workItem from="1760036611322" duration="4267000" />
       <workItem from="1760041388183" duration="244000" />
       <workItem from="1760044299543" duration="1162000" />
-      <workItem from="1760337901610" duration="2764000" />
+      <workItem from="1760337901610" duration="3157000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -439,7 +429,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760338027093</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="ajout page plan du site et mentions legales">
+      <option name="closed" value="true" />
+      <created>1760350235738</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1760350235738</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,6 +461,7 @@
     <MESSAGE value="Gestion propres de tout les erreurs" />
     <MESSAGE value="petit correction user" />
     <MESSAGE value="hmtl" />
-    <option name="LAST_COMMIT_MESSAGE" value="hmtl" />
+    <MESSAGE value="ajout page plan du site et mentions legales" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout page plan du site et mentions legales" />
   </component>
 </project>

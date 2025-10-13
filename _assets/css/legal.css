@@ -74,7 +74,11 @@ body {
     text-decoration: none;
 }
 
-a:hover {
+.legal-section a:hover {
+    text-decoration: underline;
+}
+
+.legal-address a:hover {
     text-decoration: underline;
 }
 
