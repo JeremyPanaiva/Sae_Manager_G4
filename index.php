@@ -5,6 +5,7 @@ require_once "Autoloader.php";
 
 // Importer les controllers
 use Controllers\Home\HomeController;
+use Controllers\Legal\PlanDuSiteController;
 use Controllers\User\Login;
 use Controllers\User\LoginPost;
 use Controllers\User\Register;
@@ -12,6 +13,8 @@ use Controllers\User\RegisterPost;
 use Controllers\User\Logout;
 use Controllers\User\ForgotPassword;
 use Controllers\User\ListUsers;
+use Controllers\Legal\MentionsLegalesController;
+
 
 // Démarrer la session dès le départ
 if (session_status() === PHP_SESSION_NONE) {
@@ -28,7 +31,10 @@ $controllers = [
     new Logout(),
     new ForgotPassword(),
     new ListUsers(),
+    new MentionsLegalesController(),
+    new PlanDuSiteController(),
 ];
+
 
 // Récupérer uniquement le chemin de l'URL (sans query string)
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

@@ -2,11 +2,14 @@
 
 namespace Views\Base;
 
-use Couchbase\View;
+use Controllers\Legal\MentionsLegalesController;
+use Controllers\Legal\PlanDuSiteController;
 use Views\AbstractView;
 
 class FooterView extends AbstractView
 {
+    public const LEGAL_LINK_KEY = 'LEGAL_LINK_KEY';
+    public const PLAN_LINK_KEY = 'PLAN_LINK_KEY';
 
     function templatePath(): string
     {
@@ -15,6 +18,9 @@ class FooterView extends AbstractView
 
     function templateKeys(): array
     {
-       return [];
+        return [
+            self::PLAN_LINK_KEY => PlanDuSiteController::PATH,
+            self::LEGAL_LINK_KEY => MentionsLegalesController::PATH,
+        ];
     }
 }

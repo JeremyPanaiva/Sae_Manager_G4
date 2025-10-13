@@ -4,8 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="petit correction user">
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hmtl">
+      <change afterPath="$PROJECT_DIR$/_assets/css/legal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_assets/css/plan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Legal/MentionsLegalesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Legal/PlanDuSiteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Legal/MentionsLegalesView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Legal/PlanDuSiteView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Legal/mentions-legales.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Legal/plan-du-site.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/FooterView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/FooterView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Base/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/footer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +31,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -42,24 +54,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/amuhome/P24020247/Bureau/Sae_Manager_G4&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/amuhome/P24020247/Bureau/Sae_Manager_G4",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "ts.external.directory.path": "/usr/local/PhpStorm-251.26094.133/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -112,7 +125,7 @@
       <workItem from="1760036611322" duration="4267000" />
       <workItem from="1760041388183" duration="244000" />
       <workItem from="1760044299543" duration="1162000" />
-      <workItem from="1760337901610" duration="40000" />
+      <workItem from="1760337901610" duration="2764000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -418,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760044756684</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="hmtl">
+      <option name="closed" value="true" />
+      <created>1760338027093</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1760338027093</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,6 +462,7 @@
     <MESSAGE value="gestion ereur" />
     <MESSAGE value="Gestion propres de tout les erreurs" />
     <MESSAGE value="petit correction user" />
-    <option name="LAST_COMMIT_MESSAGE" value="petit correction user" />
+    <MESSAGE value="hmtl" />
+    <option name="LAST_COMMIT_MESSAGE" value="hmtl" />
   </component>
 </project>
