@@ -192,3 +192,46 @@ a {
     }
 }
 
+/* --- Badge rôle utilisateur dans le header --- */
+.user-role {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+/* Couleurs selon le rôle */
+.user-role.etudiant {
+    background-color: #0066cc; /* bleu */
+}
+
+.user-role.responsable {
+    background-color: #28a745; /* vert */
+}
+
+.user-role.client {
+    background-color: #ff9900; /* orange */
+}
+
+/* Optionnel : petite transition au survol */
+.user-role:hover {
+    opacity: 0.85;
+    transition: 0.3s;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.role-etudiant { background-color: #007bff; }    /* bleu */
+.role-responsable { background-color: #28a745; } /* vert */
+.role-client { background-color: #ffc107; }      /* jaune */
+

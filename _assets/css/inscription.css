@@ -102,3 +102,51 @@ form label {
     margin-bottom: 15px;
     color: var(--amu-dark-gray);
 }
+
+/* --- Sélecteur de rôle (Rôle utilisateur) --- */
+form select[name="role"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--amu-dark-gray);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--amu-blue);
+    font-size: 1em;
+    font-weight: 500;
+    appearance: none; /* masque le style par défaut du navigateur */
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Flèche personnalisée (avec pseudo-élément) */
+form select[name="role"] {
+    background-image: linear-gradient(45deg, transparent 50%, var(--amu-light-blue) 50%),
+    linear-gradient(135deg, var(--amu-light-blue) 50%, transparent 50%);
+    background-position: calc(100% - 15px) calc(50% - 3px), calc(100% - 10px) calc(50% - 3px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* Focus + Hover effet */
+form select[name="role"]:focus,
+form select[name="role"]:hover {
+    border-color: var(--amu-light-blue);
+    box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+    outline: none;
+}
+
+/* Option interne (menu déroulant) */
+form select[name="role"] option {
+    color: var(--amu-blue);
+    background-color: var(--white);
+    font-weight: normal;
+}
+
+/* Label du sélecteur de rôle */
+form label[for="role"] {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--amu-dark-gray);
+}

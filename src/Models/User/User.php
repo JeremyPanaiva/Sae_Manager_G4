@@ -45,7 +45,7 @@ class User
      *
      * @throws DataBaseException
      */
-    public function register(string $firstName, string $lastName, string $email, string $password): void
+    public function register(string $firstName, string $lastName, string $email, string $password, string $role): void
     {
         try {
             $conn = Database::getConnection();
@@ -55,12 +55,15 @@ class User
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)");
+        // ✅ On ajoute la colonne "role" dans la requête
+        $stmt = $conn->prepare("INSERT INTO users (nom, prenom, mail, mdp, role) VALUES (?, ?, ?, ?, ?)");
         if (!$stmt) {
             throw new DataBaseException("SQL prepare failed in register.");
         }
 
-        $stmt->bind_param("ssss", $lastName, $firstName, $email, $hashedPassword);
+        // ✅ On lie les 5 paramètres
+        $stmt->bind_param("sssss", $lastName, $firstName, $email, $hashedPassword, $role);
+
         $stmt->execute();
         $stmt->close();
         // ❌ Ne pas fermer $conn ici
@@ -79,7 +82,7 @@ class User
             throw new DataBaseException("Unable to connect to the database.");
         }
 
-        $stmt = $conn->prepare("SELECT id, mdp, nom, prenom, mail FROM users WHERE mail = ?");
+        $stmt = $conn->prepare("SELECT id, mdp, nom, prenom, mail, role FROM users WHERE mail = ?");
         if (!$stmt) {
             throw new DataBaseException("SQL prepare failed in findByEmail.");
         }

@@ -19,6 +19,8 @@ class RegisterPost implements ControllerInterface
         $firstName = $_POST['prenom'] ?? '';
         $email     = $_POST['mail'] ?? '';
         $mdp       = $_POST['mdp'] ?? '';
+        $role = $_POST['role'] ?? 'etudiant';
+
 
         $User = new User();
         $validationExceptions = [];
@@ -46,7 +48,8 @@ class RegisterPost implements ControllerInterface
             }
 
             // 4️⃣ Inscription
-            $User->register($lastName, $firstName, $email, $mdp);
+            $User->register($firstName, $lastName, $email, $mdp, $role);
+
 
             // 5️⃣ Redirection ou message de succès
             header("Location: /user/login");

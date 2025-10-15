@@ -14,6 +14,7 @@ class HeaderView extends AbstractView
     public const INSCRIPTION_LINK_KEY = 'INSCRIPTION_LINK_KEY';
     public const CONNECTION_LINK_KEY = 'CONNECTION_LINK_KEY';
     public const USERS_LINK_KEY = 'USERS_LINK_KEY'; // 👈 nouveau lien
+    public const ROLE_KEY = 'ROLE_KEY'; // 👈 nouveau pour le rôle
 
     public function __construct()
     {
@@ -29,26 +30,36 @@ class HeaderView extends AbstractView
 
     function templateKeys(): array
     {
+        // Valeurs par défaut si non connecté
         $username = 'Nom Prénom';
+        $roleDisplay = '';
+        $roleClass = 'inconnu';
         $link = Login::PATH;
         $connectionText = 'Se connecter';
+        $usersLink = Login::PATH;
 
-        // Si l’utilisateur est connecté
-        if (isset($_SESSION['user']['nom'], $_SESSION['user']['prenom'])) {
+        // Si utilisateur connecté
+        if (isset($_SESSION['user']['nom'], $_SESSION['user']['prenom'], $_SESSION['user']['role'])) {
             $username = $_SESSION['user']['nom'] . ' ' . $_SESSION['user']['prenom'];
+            $role = strtolower($_SESSION['user']['role']); // 'etudiant', 'responsable', 'client'
+            $roleDisplay = ucfirst($role);                 // 'Étudiant', etc.
+            $roleClass = $role;                            // pour CSS
             $link = Logout::PATH;
             $connectionText = 'Se déconnecter';
-            $usersLink = ListUsers::PATH; // Utilisateurs si connecté
-        } else {
-            $usersLink = Login::PATH; // redirige vers login si pas connecté
+            $usersLink = ListUsers::PATH;
         }
 
         return [
             self::USERNAME_KEY => $username,
+            self::ROLE_KEY => $roleDisplay,
+            'ROLE_CLASS' => $roleClass,
             self::LINK_KEY => $link,
             self::INSCRIPTION_LINK_KEY => '/user/register',
             self::CONNECTION_LINK_KEY => $connectionText,
             self::USERS_LINK_KEY => $usersLink,
         ];
     }
+
+
 }
+

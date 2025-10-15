@@ -60,11 +60,17 @@ class LoginPost implements ControllerInterface
                 session_start();
             }
 
+            $role = isset($userData['role']) ? strtolower(trim($userData['role'])) : 'etudiant';
+
             $_SESSION['user'] = [
                 'id'     => $userData['id'],
                 'nom'    => $userData['nom'],
-                'prenom' => $userData['prenom']
+                'prenom' => $userData['prenom'],
+                'role'   => $role
             ];
+
+
+
 
             header("Location: /");
             exit();
