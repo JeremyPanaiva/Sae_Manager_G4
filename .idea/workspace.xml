@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout page plan du site et mentions legales">
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="petit ajout dashboard">
       <change afterPath="$PROJECT_DIR$/_assets/css/dashboard.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" afterDir="false" />
@@ -126,7 +126,7 @@
       <workItem from="1760337901610" duration="3157000" />
       <workItem from="1760377547717" duration="73000" />
       <workItem from="1760520926972" duration="2164000" />
-      <workItem from="1760539657735" duration="2010000" />
+      <workItem from="1760539657735" duration="2347000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -448,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760350235738</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="petit ajout dashboard">
+      <option name="closed" value="true" />
+      <created>1760542005453</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1760542005453</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,6 +481,7 @@
     <MESSAGE value="petit correction user" />
     <MESSAGE value="hmtl" />
     <MESSAGE value="ajout page plan du site et mentions legales" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout page plan du site et mentions legales" />
+    <MESSAGE value="petit ajout dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="petit ajout dashboard" />
   </component>
 </project>
