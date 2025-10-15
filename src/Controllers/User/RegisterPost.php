@@ -25,7 +25,7 @@ class RegisterPost implements ControllerInterface
         $User = new User();
         $validationExceptions = [];
 
-        // 1️⃣ Vérifie longueur mot de passe
+        // 1️⃣Vérifie longueur mot de passe
         if (strlen($mdp) < 8 || strlen($mdp) > 20) {
             $validationExceptions[] = new ValidationException(
                 "mdp", "string", "Le mot de passe doit contenir entre 8 et 20 caractères."
@@ -33,7 +33,7 @@ class RegisterPost implements ControllerInterface
         }
 
         try {
-            // 2️⃣ Vérifie la BDD en priorité
+            // 2️Vérifie la BDD en priorité
             try {
                 $User->emailExists($email);
             } catch (DataBaseException $dbEx) {
@@ -47,11 +47,11 @@ class RegisterPost implements ControllerInterface
                 throw new ArrayException($validationExceptions);
             }
 
-            // 4️⃣ Inscription
+            // Inscription
             $User->register($firstName, $lastName, $email, $mdp, $role);
 
 
-            // 5️⃣ Redirection ou message de succès
+            //  Redirection
             header("Location: /user/login");
             exit();
 

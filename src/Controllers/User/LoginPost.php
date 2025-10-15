@@ -22,40 +22,40 @@ class LoginPost implements ControllerInterface
         $User = new User();
         $validationExceptions = [];
 
-        // 1️⃣ Vérifie email vide ou invalide
+        //  Vérifie email vide ou invalide
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $validationExceptions[] = new ValidationException("mail", "string", "Email invalide.");
         }
 
-        // 2️⃣ Vérifie mot de passe vide
+        //  Vérifie mot de passe vide
         if (empty($mdp)) {
             $validationExceptions[] = new ValidationException("mdp", "string", "Le mot de passe ne peut pas être vide.");
         }
 
         try {
-            // 3️⃣ Si des erreurs de validation locales
+            //  Si des erreurs de validation locales
             if (count($validationExceptions) > 0) {
                 throw new ArrayException($validationExceptions);
             }
 
-            // 4️⃣ Vérifie la BDD en priorité
+            //  Vérifie la BDD en priorité
             try {
                 $userData = $User->findByEmail($email);
             } catch (DataBaseException $dbEx) {
                 throw new ArrayException([$dbEx]);
             }
 
-            // 5️⃣ Email non trouvé
+            //  Email non trouvé
             if (!$userData) {
                 throw new ArrayException([new EmailNotFoundException($email)]);
             }
 
-            // 6️⃣ Vérifie mot de passe
+            //  Vérifie mot de passe
             if (!password_verify($mdp, $userData['mdp'])) {
                 throw new ArrayException([new InvalidPasswordException()]);
             }
 
-            // 7️⃣ Connexion réussie
+            //  Connexion réussie
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }

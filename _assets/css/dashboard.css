@@ -1,0 +1,36 @@
+.main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.dashboard {
+    width: 80%;
+    max-width: 800px;
+    background: #fff;
+    border: 2px solid #0056b3;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dashboard legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    padding: 0 1rem;
+}
+
+.user-info {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}

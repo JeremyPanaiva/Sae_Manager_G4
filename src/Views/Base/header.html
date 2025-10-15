@@ -19,9 +19,7 @@
         </section>
         <section class="user-info" aria-label="Informations utilisateur">
             <p>👤 {{USERNAME_KEY}} <span class="role-badge role-{{ROLE_CLASS}}">{{ROLE_KEY}}</span></p>
-
             <a href="{{LINK_KEY}}" class="btn btn-outline">{{CONNECTION_LINK_KEY}}</a>
-
             <a href="{{INSCRIPTION_LINK_KEY}}" class="btn btn-outline">S'inscrire</a>
         </section>
     </section>
@@ -31,7 +29,9 @@
 <!-- Navigation -->
 <nav class="nav" aria-label="Contenu principal">
     <ul class="nav-content">
-        <li class="nav-item active" onclick="showSection('dashboard')">Tableau de bord</li>
+        <li class="nav-item active">
+            <a href="{{DASHBOARD_LINK_KEY}}">Tableau de bord</a>
+        </li>
         <li class="nav-item" onclick="showSection('saes')">Mes SAEs</li>
         <li class="nav-item" onclick="showSection('calendar')">Calendrier</li>
         <li class="nav-item">

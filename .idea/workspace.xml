@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout page plan du site et mentions legales">
+      <change afterPath="$PROJECT_DIR$/_assets/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Dashboard/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/inscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/inscription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginPost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +27,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -125,6 +126,7 @@
       <workItem from="1760337901610" duration="3157000" />
       <workItem from="1760377547717" duration="73000" />
       <workItem from="1760520926972" duration="2164000" />
+      <workItem from="1760539657735" duration="2010000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />

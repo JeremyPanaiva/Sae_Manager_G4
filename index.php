@@ -14,6 +14,8 @@ use Controllers\User\Logout;
 use Controllers\User\ForgotPassword;
 use Controllers\User\ListUsers;
 use Controllers\Legal\MentionsLegalesController;
+use Controllers\Dashboard\DashboardController;
+
 
 
 // Démarrer la session dès le départ
@@ -33,6 +35,8 @@ $controllers = [
     new ListUsers(),
     new MentionsLegalesController(),
     new PlanDuSiteController(),
+    new DashboardController(),
+
 ];
 
 
