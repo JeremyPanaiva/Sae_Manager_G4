@@ -104,6 +104,18 @@ class User
      *
      * @throws DataBaseException
      */
+
+    public static function getAllByRole(string $role): array
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT id, nom, prenom FROM users WHERE role = ?");
+        $stmt->bind_param("s", $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $users;
+    }
     public function getUsersPaginated(int $limit, int $offset): array
     {
         try {

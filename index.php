@@ -6,6 +6,8 @@ require_once "Autoloader.php";
 // Importer les controllers
 use Controllers\Home\HomeController;
 use Controllers\Legal\PlanDuSiteController;
+use Controllers\Sae\AttribuerSaeController;
+use Controllers\Sae\SaeController;
 use Controllers\User\Login;
 use Controllers\User\LoginPost;
 use Controllers\User\Register;
@@ -15,7 +17,7 @@ use Controllers\User\ForgotPassword;
 use Controllers\User\ListUsers;
 use Controllers\Legal\MentionsLegalesController;
 use Controllers\Dashboard\DashboardController;
-
+use Controllers\Sae\CreateSaeController;
 
 
 // Démarrer la session dès le départ
@@ -36,6 +38,11 @@ $controllers = [
     new MentionsLegalesController(),
     new PlanDuSiteController(),
     new DashboardController(),
+    new SaeController(),
+    new CreateSaeController() ,
+    new AttribuerSaeController()
+
+
 
 ];
 

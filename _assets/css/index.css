@@ -15,12 +15,25 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--amu-gray);
     color: var(--amu-blue);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
 }
+.main {
+    flex: 1;
+}
+
 
 .header {
     background: linear-gradient(135deg, var(--amu-blue) 0%, var(--amu-light-blue) 100%);
@@ -125,7 +138,7 @@ a {
 }
 
 .main {
-    height: 80vh;
+    flex: 1 ;
 }
 
 .Test  {

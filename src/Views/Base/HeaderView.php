@@ -18,6 +18,8 @@ class HeaderView extends AbstractView
     public const ROLE_KEY = 'ROLE_KEY';
     public const DASHBOARD_LINK_KEY = 'DASHBOARD_LINK_KEY'; // 👈 nouveau
 
+    public const SAE_LINK_KEY = 'SAE_LINK_KEY'; // 👈 nouveau lien SAE
+
     public function __construct()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -39,6 +41,7 @@ class HeaderView extends AbstractView
         $connectionText = 'Se connecter';
         $usersLink = Login::PATH;
         $dashboardLink = Login::PATH; // 👈 Par défaut : redirige vers login si non connecté
+        $saeLink = '/sae'; // Par défaut
 
         // Si utilisateur connecté
         if (isset($_SESSION['user']['nom'], $_SESSION['user']['prenom'], $_SESSION['user']['role'])) {
@@ -49,6 +52,7 @@ class HeaderView extends AbstractView
             $link = Logout::PATH;
             $connectionText = 'Se déconnecter';
             $usersLink = ListUsers::PATH;
+            $saeLink = '/sae'; // Tous les rôles peuvent accéder à SAE
             $dashboardLink = DashboardController::PATH; // 👈 vers tableau de bord
         }
 
@@ -60,7 +64,8 @@ class HeaderView extends AbstractView
             self::INSCRIPTION_LINK_KEY => '/user/register',
             self::CONNECTION_LINK_KEY => $connectionText,
             self::USERS_LINK_KEY => $usersLink,
-            self::DASHBOARD_LINK_KEY => $dashboardLink, // 👈 ajouté
+            self::DASHBOARD_LINK_KEY => $dashboardLink,
+            self::SAE_LINK_KEY => $saeLink,
         ];
     }
 }
