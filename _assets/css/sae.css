@@ -195,3 +195,21 @@
     font-size: 0.9rem;
     font-weight: bold;
 }
+/* Bouton Supprimer SAE */
+.sae-page .sae-card .btn-supprimer {
+    padding: 6px 12px;
+    background-color: #e74c3c; /* rouge vif */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sae-page .sae-card .btn-supprimer:hover {
+    background-color: #c0392b; /* rouge plus foncé au hover */
+    transform: translateY(-1px);
+}
+

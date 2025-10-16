@@ -87,7 +87,6 @@ class SaeView extends BaseView
 
 
 
-
             case 'responsable':
                 $html .= "<h2>SAE proposées par les clients</h2>";
                 foreach ($this->data['saes'] ?? [] as $sae) {
@@ -95,23 +94,24 @@ class SaeView extends BaseView
                     $html .= "<h3>" . htmlspecialchars($sae['titre']) . "</h3>";
                     $html .= "<p>" . htmlspecialchars($sae['description']) . "</p>";
 
-                    // Formulaire d'attribution
                     $html .= "<form method='POST' action='/attribuer_sae'>";
                     $html .= "<label>Attribuer à :</label>";
-                    $html .= "<select name='etudiants[]' multiple required>";
+                    $html .= "<select name='etudiants[]' multiple size='5' required>";
                     foreach ($this->data['etudiants'] ?? [] as $etu) {
                         $html .= "<option value='{$etu['id']}'>" . htmlspecialchars($etu['nom'] . ' ' . $etu['prenom']) . "</option>";
                     }
                     $html .= "</select>";
-                    $html .= "<label>Date de rendu :</label>";
-                    $html .= "<input type='date' name='date_rendu' required>";
+                    $html .= "<small>(Maintiens Ctrl ou Cmd pour sélectionner plusieurs étudiants)</small>";
                     $html .= "<input type='hidden' name='sae_id' value='{$sae['id']}'>";
                     $html .= "<button type='submit'>Attribuer</button>";
                     $html .= "</form>";
 
+
+
                     $html .= "</div>";
                 }
                 break;
+
 
             case 'client':
                 $html .= "<h2>Créer une nouvelle SAE</h2>";
@@ -127,9 +127,17 @@ class SaeView extends BaseView
                     $html .= "<h3>" . htmlspecialchars($sae['titre']) . "</h3>";
                     $html .= "<p>" . htmlspecialchars($sae['description']) . "</p>";
                     $html .= "<p><strong>Date de création :</strong> " . htmlspecialchars($sae['date_creation']) . "</p>";
+
+                    // 👇 Formulaire de suppression
+                    $html .= "<form method='POST' action='/delete_sae' onsubmit='return confirm(\"Supprimer cette SAE ?\");'>";
+                    $html .= "<input type='hidden' name='sae_id' value='{$sae['id']}'>";
+                    $html .= "<button type='submit' class='btn-supprimer'>Supprimer</button>";
+                    $html .= "</form>";
+
                     $html .= "</div>";
                 }
                 break;
+
 
             default:
                 $html .= "<p>Rôle inconnu ou aucune SAE disponible.</p>";

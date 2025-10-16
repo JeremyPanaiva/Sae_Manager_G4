@@ -29,19 +29,17 @@
 <!-- Navigation -->
 <nav class="nav" aria-label="Contenu principal">
     <ul class="nav-content">
-        <li class="nav-item active">
+        <li class="nav-item {{ACTIVE_DASHBOARD}}">
             <a href="{{DASHBOARD_LINK_KEY}}">Tableau de bord</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ACTIVE_SAE}}">
             <a href="{{SAE_LINK_KEY}}">SAEs</a>
         </li>
-        <li class="nav-item" onclick="showSection('calendar')">Calendrier</li>
-        <li class="nav-item">
+        <li class="nav-item {{ACTIVE_USERS}}">
             <a href="{{USERS_LINK_KEY}}">Utilisateurs</a>
         </li>
+
 
         <li class="nav-item" onclick="showSection('notifications')">Notifications</li>
     </ul>
 </nav>
-
-

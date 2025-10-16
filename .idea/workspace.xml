@@ -5,20 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="petit ajout dashboard">
-      <change afterPath="$PROJECT_DIR$/_assets/css/sae.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/AttribuerSaeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/CreateSaeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/SaeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Sae/Sae.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Sae/SaeAttribution.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Sae/SaeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Sae/sae.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_assets/script/dash.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/TodoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/DeleteSaeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/UpdateSaeDateController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Sae/TodoList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/sae.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/sae.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Sae/AttribuerSaeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Sae/AttribuerSaeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Sae/Sae.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Sae/Sae.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Sae/SaeAttribution.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Sae/SaeAttribution.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Dashboard/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Sae/SaeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Sae/SaeView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +36,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -80,8 +85,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Views/Sae" />
       <recent name="$PROJECT_DIR$/src/Controllers/Sae" />
+      <recent name="$PROJECT_DIR$/src/Views/Sae" />
       <recent name="$PROJECT_DIR$/src/Controllers/User" />
       <recent name="$PROJECT_DIR$/src/Models/User" />
     </key>
@@ -133,6 +138,8 @@
       <workItem from="1760377547717" duration="73000" />
       <workItem from="1760520926972" duration="2164000" />
       <workItem from="1760539657735" duration="11629000" />
+      <workItem from="1760605084262" duration="6294000" />
+      <workItem from="1760635791048" duration="9699000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />

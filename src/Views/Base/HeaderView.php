@@ -26,6 +26,10 @@ class HeaderView extends AbstractView
             session_start();
         }
     }
+    private function getActiveClass(string $link): string {
+        $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        return ($currentPath === $link) ? 'active' : '';
+    }
 
     function templatePath(): string
     {
@@ -56,6 +60,8 @@ class HeaderView extends AbstractView
             $dashboardLink = DashboardController::PATH; // 👈 vers tableau de bord
         }
 
+        $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
         return [
             self::USERNAME_KEY => $username,
             self::ROLE_KEY => $roleDisplay,
@@ -66,6 +72,12 @@ class HeaderView extends AbstractView
             self::USERS_LINK_KEY => $usersLink,
             self::DASHBOARD_LINK_KEY => $dashboardLink,
             self::SAE_LINK_KEY => $saeLink,
+
+            // Classes actives dynamiques
+            'ACTIVE_DASHBOARD' => $this->getActiveClass($dashboardLink),
+            'ACTIVE_SAE'       => $this->getActiveClass($saeLink),
+            'ACTIVE_USERS'     => $this->getActiveClass($usersLink),
         ];
+
     }
 }

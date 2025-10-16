@@ -4,10 +4,13 @@ require_once "Autoloader.php";
 \Autoloader::register();
 
 // Importer les controllers
+use Controllers\Dashboard\TodoController;
 use Controllers\Home\HomeController;
 use Controllers\Legal\PlanDuSiteController;
 use Controllers\Sae\AttribuerSaeController;
+use Controllers\Sae\DeleteSaeController;
 use Controllers\Sae\SaeController;
+use Controllers\Sae\UpdateSaeDateController;
 use Controllers\User\Login;
 use Controllers\User\LoginPost;
 use Controllers\User\Register;
@@ -40,10 +43,10 @@ $controllers = [
     new DashboardController(),
     new SaeController(),
     new CreateSaeController() ,
-    new AttribuerSaeController()
-
-
-
+    new AttribuerSaeController(),
+    new DeleteSaeController(),
+    new TodoController(),
+    new UpdateSaeDateController()
 ];
 
 

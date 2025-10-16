@@ -26,24 +26,20 @@ class AttribuerSaeController implements ControllerInterface
 
         $saeId = intval($_POST['sae_id'] ?? 0);
         $etudiants = $_POST['etudiants'] ?? [];
-        $dateRendu = $_POST['date_rendu'] ?? null;
         $responsableId = $_SESSION['user']['id'];
 
         // Vérifier que tous les champs sont remplis
-        if ($saeId <= 0 || empty($etudiants) || !$dateRendu) {
+        if ($saeId <= 0 || empty($etudiants)) {
             header('Location: /sae?error=missing_fields');
             exit();
         }
 
-        // Attribuer la SAE à chaque étudiant sélectionné
-        foreach ($etudiants as $etuId) {
-            SaeAttribution::assignToStudent(
-                intval($saeId),
-                intval($etuId),
-                $responsableId,
-                $dateRendu
-            );
-        }
+        // Attribution unique pour tous les étudiants sélectionnés
+        SaeAttribution::assignStudentsToSae(
+            $saeId,
+            array_map('intval', $etudiants),
+            $responsableId
+        );
 
         // Redirection avec succès
         header('Location: /sae?success=sae_assigned');

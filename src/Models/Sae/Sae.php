@@ -34,4 +34,22 @@ class Sae
         $stmt->close();
         return $saes;
     }
+    public static function delete(int $clientId, int $saeId): bool
+    {
+        $mysqli = \Models\Database::getConnection(); // mysqli
+
+        // Supprime uniquement de la table SAE
+        $stmt = $mysqli->prepare("DELETE FROM sae WHERE id = ? AND client_id = ?");
+        if (!$stmt) {
+            throw new \Exception("Erreur prepare: " . $mysqli->error);
+        }
+
+        $stmt->bind_param("ii", $saeId, $clientId);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result;
+    }
+
+
 }
