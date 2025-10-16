@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="petit ajout dashboard">
-      <change afterPath="$PROJECT_DIR$/_assets/script/dash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/TodoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/DeleteSaeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Sae/UpdateSaeDateController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Sae/TodoList.php" afterDir="false" />
+    <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="ajout dash board coté etudiant et responsble &#10;&#10;et modife de la sae">
+      <change afterPath="$PROJECT_DIR$/src/Shared/Exceptions/SaeAttribueException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/sae.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/sae.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Dashboard/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Sae/AttribuerSaeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Sae/AttribuerSaeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Sae/DeleteSaeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Sae/DeleteSaeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Sae/Sae.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Sae/Sae.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Sae/SaeAttribution.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Sae/SaeAttribution.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/HeaderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Dashboard/DashboardView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Dashboard/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Sae/SaeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Sae/SaeView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +126,7 @@
       <workItem from="1760520926972" duration="2164000" />
       <workItem from="1760539657735" duration="11629000" />
       <workItem from="1760605084262" duration="6294000" />
-      <workItem from="1760635791048" duration="9699000" />
+      <workItem from="1760635791048" duration="10917000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />
@@ -477,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760542018167</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="ajout dash board coté etudiant et responsble &#10;&#10;et modife de la sae">
+      <option name="closed" value="true" />
+      <created>1760645758381</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1760645758382</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,6 +498,7 @@
     <MESSAGE value="hmtl" />
     <MESSAGE value="ajout page plan du site et mentions legales" />
     <MESSAGE value="petit ajout dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="petit ajout dashboard" />
+    <MESSAGE value="ajout dash board coté etudiant et responsble &#10;&#10;et modife de la sae" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout dash board coté etudiant et responsble &#10;&#10;et modife de la sae" />
   </component>
 </project>

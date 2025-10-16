@@ -121,6 +121,13 @@ class SaeView extends BaseView
                 $html .= "<button type='submit'>Créer SAE</button>";
                 $html .= "</form>";
 
+                // Message d'erreur
+                if (!empty($this->data['error_message'])) {
+                    $html .= "<div class='error-message'>";
+                    $html .= htmlspecialchars($this->data['error_message']);
+                    $html .= "</div>";
+                }
+
                 $html .= "<h2>Vos SAE existantes</h2>";
                 foreach ($this->data['saes'] ?? [] as $sae) {
                     $html .= "<div class='sae-card'>";
@@ -128,7 +135,7 @@ class SaeView extends BaseView
                     $html .= "<p>" . htmlspecialchars($sae['description']) . "</p>";
                     $html .= "<p><strong>Date de création :</strong> " . htmlspecialchars($sae['date_creation']) . "</p>";
 
-                    // 👇 Formulaire de suppression
+                    // Formulaire de suppression
                     $html .= "<form method='POST' action='/delete_sae' onsubmit='return confirm(\"Supprimer cette SAE ?\");'>";
                     $html .= "<input type='hidden' name='sae_id' value='{$sae['id']}'>";
                     $html .= "<button type='submit' class='btn-supprimer'>Supprimer</button>";
@@ -137,6 +144,7 @@ class SaeView extends BaseView
                     $html .= "</div>";
                 }
                 break;
+
 
 
             default:

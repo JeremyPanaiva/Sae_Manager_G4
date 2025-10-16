@@ -213,3 +213,39 @@
     transform: translateY(-1px);
 }
 
+/* Style du message d'erreur pour le client */
+.error-message {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Style des cartes SAE */
+.sae-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Bouton supprimer */
+.btn-supprimer {
+    background-color: #cc0000;
+    color: #fff;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-supprimer:hover {
+    background-color: #990000;
+}
+
+

@@ -51,5 +51,30 @@ class Sae
         return $result;
     }
 
+    public static function isAttribuee(int $saeId): bool
+    {
+        $db = \Models\Database::getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) as count FROM sae_attributions WHERE sae_id = ?");
+        $stmt->bind_param("i", $saeId);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        return $result['count'] > 0;
+    }
+
+    public static function getById(int $saeId): ?array
+    {
+        $db = \Models\Database::getConnection();
+
+        $stmt = $db->prepare("SELECT * FROM sae WHERE id = ?");
+        $stmt->bind_param("i", $saeId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $sae = $result->fetch_assoc();
+        $stmt->close();
+
+        return $sae ?: null; // Retourne null si pas trouvé
+    }
+
 
 }
