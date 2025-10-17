@@ -7,20 +7,22 @@ use Models\Database;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class ForgotPasswordPost implements ControllerInterface {
-
+class ForgotPasswordPost implements ControllerInterface
+{
     public const PATH = "/user/forgot-password-post";
 
-    private const SMTP_HOST_DEFAULT = 'smtp-sae-manager-g4.alwaysdata.net';
-    private const SMTP_PORT_DEFAULT = 587;
+    // Défauts sûrs, mais privilégie les variables d'environnement
+    private const SMTP_HOST_DEFAULT = 'smtp-alwaysdata.com';
+    private const SMTP_PORT_DEFAULT = 587; // STARTTLS
     private const SMTP_SECURE_DEFAULT = 'tls';
-    private const SMTP_USERNAME_DEFAULT = '';
+    private const SMTP_USERNAME_DEFAULT = 'sae-manager-g4@alwaysdata.net';
     private const SMTP_PASSWORD_DEFAULT = '';
     private const FROM_EMAIL_DEFAULT = 'sae-manager-g4@alwaysdata.net';
     private const FROM_NAME_DEFAULT = 'SAE Manager';
     private const TOKEN_EXPIRY_HOURS = 1;
 
-    public function control() {
+    public function control()
+    {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -76,17 +78,9 @@ class ForgotPasswordPost implements ControllerInterface {
 
             $emailSent = $this->sendResetEmail($email, $token, $nom, $prenom);
 
-            if ($emailSent) {
-                $_SESSION['flash'] = [
-                    'type' => 'success',
-                    'message' => 'Un lien de réinitialisation a été envoyé à votre adresse email.'
-                ];
-            } else {
-                $_SESSION['flash'] = [
-                    'type' => 'error',
-                    'message' => 'Impossible d\'envoyer l\'email. Vérifiez la configuration SMTP.'
-                ];
-            }
+            $_SESSION['flash'] = $emailSent
+                ? ['type' => 'success', 'message' => 'Un lien de réinitialisation a été envoyé à votre adresse email.']
+                : ['type' => 'error', 'message' => 'Impossible d\'envoyer l\'email. Vérifiez la configuration SMTP.'];
 
             header("Location: /user/login");
             exit();
@@ -97,69 +91,63 @@ class ForgotPasswordPost implements ControllerInterface {
     }
 
     private function sendResetEmail(string $email, string $token, string $nom, string $prenom): bool {
-        // lire la configuration depuis les variables d'environnement si disponibles (recommandé)
-        $smtpHost = getenv('SMTP_HOST') ?: self::SMTP_HOST_DEFAULT;
-        $smtpPort = getenv('SMTP_PORT') ?: self::SMTP_PORT_DEFAULT;
-        $smtpSecure = getenv('SMTP_SECURE') ?: self::SMTP_SECURE_DEFAULT; // 'tls' or 'ssl'
-        $smtpUser = getenv('SMTP_USERNAME') ?: self::SMTP_USERNAME_DEFAULT;
-        $smtpPass = getenv('SMTP_PASSWORD') ?: self::SMTP_PASSWORD_DEFAULT;
-        $fromEmail = getenv('FROM_EMAIL') ?: self::FROM_EMAIL_DEFAULT;
-        $fromName = getenv('FROM_NAME') ?: self::FROM_NAME_DEFAULT;
+        // lire la configuration depuis les variables d'environnement (recommandé)
+        $smtpHost   = getenv('SMTP_HOST') ?: 'smtp-alwaysdata.com';
+        $smtpPort   = (int)(getenv('SMTP_PORT') ?: 587);
+        $smtpSecure = strtolower((string)(getenv('SMTP_SECURE') ?: 'tls')); // 'tls' ou 'ssl'
+        $smtpUser   = getenv('SMTP_USERNAME') ?: '';
+        $smtpPass   = getenv('SMTP_PASSWORD') ?: '';
+        $fromEmail  = getenv('FROM_EMAIL') ?: $smtpUser;
+        $fromName   = getenv('FROM_NAME') ?: 'SAE Manager';
 
-        // construire le lien de réinitialisation
-        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
-        $resetLink = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/user/reset-password?token=' . $token;
+        // construire le lien de réinitialisation (APP_URL prioritaire)
+        $appUrl = rtrim((string) getenv('APP_URL'), '/');
+        if ($appUrl !== '') {
+            $resetLink = $appUrl . '/user/reset-password?token=' . urlencode($token);
+        } else {
+            $proto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http');
+            $host  = $_SERVER['HTTP_HOST'] ?? 'localhost';
+            $resetLink = $proto . '://' . $host . '/user/reset-password?token=' . urlencode($token);
+        }
 
-        $mail = new PHPMailer(true);
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
 
         try {
-            // Debug: mettre 2 pour afficher les logs SMTP (pendant les tests)
-            $mail->SMTPDebug = 0;
+            $mail->SMTPDebug = (int)(getenv('SMTP_DEBUG') ?: 0);
             $mail->isSMTP();
             $mail->Host = $smtpHost;
             $mail->SMTPAuth = true;
             $mail->Username = $smtpUser;
             $mail->Password = $smtpPass;
 
-            // utiliser les constantes PHPMailer si possible
-            if (strtolower($smtpSecure) === 'ssl') {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            if ($smtpSecure === 'ssl') {
+                $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS; // 465
             } else {
-                // 'tls' ou autre -> STARTTLS
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; // 587
             }
 
-            $mail->Port = (int)$smtpPort;
+            $mail->Port = $smtpPort;
             $mail->CharSet = 'UTF-8';
-            // si le serveur SMTP utilise un certificat auto-signé, décommenter les options ci-dessous (déconseillé en prod)
-            /*
-            $mail->SMTPOptions = [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                ]
-            ];
-            */
 
             $mail->setFrom($fromEmail, $fromName);
-            $mail->addAddress($email, "$prenom $nom");
             $mail->addReplyTo($fromEmail, $fromName);
+            $mail->addAddress($email, trim("$prenom $nom"));
 
             $mail->isHTML(true);
             $mail->Subject = 'Réinitialisation de votre mot de passe - SAE Manager';
-            $mail->Body = $this->getEmailHtmlBody($prenom, $nom, $resetLink);
+            $mail->Body    = $this->getEmailHtmlBody($prenom, $nom, $resetLink);
             $mail->AltBody = $this->getEmailTextBody($prenom, $nom, $resetLink);
 
             $mail->send();
             return true;
-        } catch (Exception $e) {
+        } catch (\PHPMailer\PHPMailer\Exception $e) {
             error_log('PHPMailer Error: ' . $e->getMessage());
             return false;
         }
     }
 
-    private function getEmailHtmlBody(string $prenom, string $nom, string $resetLink): string {
+    private function getEmailHtmlBody(string $prenom, string $nom, string $resetLink): string
+    {
         return "
         <!DOCTYPE html>
         <html lang='fr'>
@@ -177,11 +165,17 @@ class ForgotPasswordPost implements ControllerInterface {
         ";
     }
 
-    private function getEmailTextBody(string $prenom, string $nom, string $resetLink): string {
-        return "Bonjour $prenom $nom,\n\nVous avez demandé la réinitialisation de votre mot de passe.\n\nOuvrez ce lien pour réinitialiser : $resetLink\n\nCe lien expirera dans " . self::TOKEN_EXPIRY_HOURS . " heure(s).\n\nSi vous n'avez pas demandé cette réinitialisation, ignorez cet email.\n\nCordialement,\nSAE Manager";
+    private function getEmailTextBody(string $prenom, string $nom, string $resetLink): string
+    {
+        return "Bonjour $prenom $nom,\n\n"
+            . "Vous avez demandé la réinitialisation de votre mot de passe.\n\n"
+            . "Ouvrez ce lien pour réinitialiser : $resetLink\n\n"
+            . "Ce lien expirera dans " . self::TOKEN_EXPIRY_HOURS . " heure(s) et ne peut être utilisé qu'une seule fois.\n\n"
+            . "Si vous n'êtes pas à l'origine de cette demande, vous pouvez ignorer cet email.\n";
     }
 
-    static function support(string $chemin, string $method): bool {
+    public static function support(string $chemin, string $method): bool
+    {
         return $chemin === self::PATH && $method === "POST";
     }
 }

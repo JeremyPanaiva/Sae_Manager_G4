@@ -1,27 +1,29 @@
 <link rel="stylesheet" href="/_assets/css/inscription.css">
 <script src="/_assets/script/showPassword.js"></script>
+<section class="main" aria-label="Contenu principal">
 
-<form action="/src/Controllers/User/LoginPost.php" method="POST">
-    <fieldset>
-        <legend>Connexion</legend>
+    <form method="POST" action="/user/login">
 
-        <label for="uname">Email :</label>
-        <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">
+        <fieldset>
+            <legend>Connexion</legend>
 
-        <label for="psw">Mot de passe :</label>
-        <input type="password" id="psw" name="psw" required placeholder="Votre mot de passe">
+            <label for="uname">Email :</label>
+            <input type="email" id="uname" name="uname" required placeholder="exemple@etu.univ-amu.fr">
 
-        <!-- Checkbox pour voir le mot de passe -->
-        <label>
-            <input type="checkbox" data-show-password="psw"> Voir le mot de passe
-        </label>
+            <label for="psw">Mot de passe :</label>
+            <input type="password" id="psw" name="psw" required placeholder="Votre mot de passe">
 
-        <input type="submit" value="Se connecter" name="ok">
+            <!-- Checkbox pour voir le mot de passe -->
+            <label>
+                <input type="checkbox" data-show-password="psw"> Voir le mot de passe
+            </label>
 
-        <div class="forgot-password-link">
-            <a href="/user/forgot-password">Mot de passe oublié ?</a>
-        </div>
-    </fieldset>
-</form>
+            <input type="submit" value="Se connecter" name="ok">
 
+            <div class="forgot-password-link">
+                <a href="/user/forgot-password">Mot de passe oublié ?</a>
+            </div>
+        </fieldset>
+    </form>
 
+</section>
