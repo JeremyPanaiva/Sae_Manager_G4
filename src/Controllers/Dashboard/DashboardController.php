@@ -36,6 +36,8 @@ class DashboardController implements ControllerInterface
 
     private function prepareDashboardData(int $userId, string $role): array
     {
+        $saes = [];
+
         if ($role === 'etudiant') {
             // Récupération des SAE pour l'étudiant
             $saes = SaeAttribution::getSaeForStudent($userId);
@@ -45,26 +47,52 @@ class DashboardController implements ControllerInterface
                 $sae['todos'] = $sae['sae_id'] ? TodoList::getBySae($sae['sae_id']) : [];
                 $sae['etudiants'] = $sae['sae_id'] ? SaeAttribution::getStudentsBySae($sae['sae_id']) : [];
             }
-        } elseif ($role === 'responsable') {
+        }
+        elseif ($role === 'responsable') {
             // Récupération des SAE attribuées par le responsable
             $saes = SaeAttribution::getSaeForResponsable($userId);
 
             foreach ($saes as &$sae) {
                 $saeId = $sae['sae_id'] ?? null;
-
-                // Récupérer **toutes les tâches de la SAE** (lecture seule)
                 $sae['todos'] = $saeId ? TodoList::getBySae($saeId) : [];
-
-                // Tous les étudiants associés à cette SAE
                 $sae['etudiants'] = $saeId ? SaeAttribution::getStudentsBySae($saeId) : [];
             }
         }
-        else {
-            $saes = [];
+        elseif ($role === 'client') {
+            // Récupérer toutes les SAE créées par ce client
+            $clientSaes = \Models\Sae\Sae::getByClient($userId);
+
+            foreach ($clientSaes as $sae) {
+                $saeId = $sae['id'];
+
+                // Récupérer les attributions de cette SAE
+                $attributions = SaeAttribution::getAttributionsBySae($saeId);
+
+                // Ne garder que les SAE qui ont au moins une attribution
+                if (empty($attributions)) {
+                    continue; // passe à la SAE suivante
+                }
+
+                foreach ($attributions as &$attrib) {
+                    $attrib['etudiants'] = SaeAttribution::getStudentsBySae($saeId);
+                    $attrib['todos'] = TodoList::getBySaeAttribution($attrib['id']);
+                    $attrib['avis'] = SaeAttribution::getAvisBySaeAttribution($attrib['id']);
+                    $attrib['sae_attribution_id'] = $attrib['id'];
+                }
+
+                $sae['attributions'] = $attributions;
+                $saes[] = $sae;
+            }
         }
+
+
 
         return ['saes' => $saes];
     }
+
+
+
+
 
 
 

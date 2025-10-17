@@ -135,4 +135,37 @@ class SaeAttribution
         $stmt->close();
         return $saes;
     }
+    public static function getAttributionsBySae(int $saeId): array
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("
+        SELECT sa.*, s.client_id
+        FROM sae_attributions sa
+        JOIN sae s ON sa.sae_id = s.id
+        WHERE sa.sae_id = ?
+    ");
+        $stmt->bind_param("i", $saeId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $attributions = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $attributions;
+    }
+
+    public static function getAvisBySaeAttribution(int $saeAttributionId): array
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("
+        SELECT * FROM sae_avis WHERE sae_attribution_id = ?
+    ");
+        $stmt->bind_param("i", $saeAttributionId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $avis = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $avis;
+    }
+
+
+
 }

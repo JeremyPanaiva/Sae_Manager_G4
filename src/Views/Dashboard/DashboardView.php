@@ -157,29 +157,82 @@ class DashboardView extends BaseView
 
 
             case 'client':
-                $html .= "<h2>Vos SAE créées</h2>";
+                $html .= "<h2>Vos SAE créées et leurs attributions</h2>";
 
                 foreach ($this->data['saes'] ?? [] as $sae) {
                     $html .= "<div class='dashboard-card'>";
-                    $html .= "<h3>" . htmlspecialchars($sae['titre']) . "</h3>";
-                    $html .= "<p><strong>Description :</strong> " . htmlspecialchars($sae['description']) . "</p>";
-                    $html .= "<p><strong>Date de création :</strong> " . htmlspecialchars($sae['date_creation']) . "</p>";
 
-                    // Lien pour voir les attributions (optionnel)
-                    $html .= "<a href='/sae_attributions/{$sae['id']}' class='btn btn-outline'>Voir les attributions</a>";
+                    // --- Titre et description de la SAE ---
+                    $titreSae = htmlspecialchars($sae['titre'] ?? 'Titre inconnu');
+                    $description = htmlspecialchars($sae['description'] ?? '');
+                    $html .= "<h3>{$titreSae}</h3>";
+                    $html .= "<p><strong>Description :</strong> {$description}</p>";
 
-                    // Avis / remarques des responsables
-                    $html .= "<h4>Remarques</h4>";
-                    foreach ($sae['avis'] ?? [] as $avis) {
-                        $html .= "<div class='avis-card'>";
-                        $html .= "<p><strong>" . ucfirst($avis['emetteur']) . " :</strong> " . htmlspecialchars($avis['message']) . "</p>";
-                        $html .= "<small>" . htmlspecialchars($avis['date_envoi']) . "</small>";
-                        $html .= "</div>";
+                    // --- Prendre la première attribution pour l'affichage ---
+                    $firstAttrib = $sae['attributions'][0] ?? null;
+                    if ($firstAttrib) {
+                        // --- Étudiants associés ---
+                        $etudiants = $firstAttrib['etudiants'] ?? [];
+                        if (!empty($etudiants)) {
+                            $etudiantsList = [];
+                            foreach ($etudiants as $etu) {
+                                $etudiantsList[] = htmlspecialchars(($etu['nom'] ?? '') . ' ' . ($etu['prenom'] ?? ''));
+                            }
+                            $html .= "<p><strong>Étudiants :</strong> " . implode(', ', $etudiantsList) . "</p>";
+                        } else {
+                            $html .= "<p><strong>Étudiants :</strong> Aucun</p>";
+                        }
+
+                        // --- Date de rendu ---
+                        $dateRendu = htmlspecialchars($firstAttrib['date_rendu'] ?? '');
+                        $html .= "<p><strong>Date de rendu :</strong> {$dateRendu}</p>";
+
+                        // --- To-Do list et barre de progression ---
+                        $todos = $firstAttrib['todos'] ?? [];
+                        if (!empty($todos)) {
+                            $totalTasks = count($todos);
+                            $doneTasks = count(array_filter($todos, fn($task) => !empty($task['fait'])));
+                            $percent = $totalTasks > 0 ? round(($doneTasks / $totalTasks) * 100) : 0;
+
+                            $html .= "<p><strong>Avancement :</strong> {$percent}%</p>";
+                            $html .= "<div class='progress-bar'>";
+                            $html .= "<div class='progress-fill' style='width: {$percent}%;'></div>";
+                            $html .= "</div>";
+
+                            $html .= "<ul class='todo-list'>";
+                            foreach ($todos as $task) {
+                                $taskTitre = htmlspecialchars($task['titre'] ?? 'Tâche');
+                                $fait = !empty($task['fait']);
+                                $html .= "<li>{$taskTitre}" . ($fait ? " ✅" : "") . "</li>";
+                            }
+                            $html .= "</ul>";
+                        } else {
+                            $html .= "<p>Aucune tâche pour cette attribution.</p>";
+                        }
+
+                        // --- Remarques / avis ---
+                        if (!empty($firstAttrib['avis'])) {
+                            $html .= "<h4>Remarques</h4>";
+                            foreach ($firstAttrib['avis'] as $avis) {
+                                $emetteur = htmlspecialchars(ucfirst($avis['emetteur'] ?? ''));
+                                $message = htmlspecialchars($avis['message'] ?? '');
+                                $dateAvis = htmlspecialchars($avis['date_envoi'] ?? '');
+
+                                $html .= "<div class='avis-card'>";
+                                $html .= "<p><strong>{$emetteur} :</strong> {$message}</p>";
+                                $html .= "<small>{$dateAvis}</small>";
+                                $html .= "</div>";
+                            }
+                        }
                     }
 
-                    $html .= "</div>";
+                    $html .= "</div>"; // dashboard-card
                 }
                 break;
+
+
+
+
 
             case 'responsable':
                 $html .= "<h2>Vos SAE attribuées</h2>";
