@@ -26,9 +26,17 @@ class ResetPassword implements ControllerInterface {
             exit();
         }
 
-        $conn = Database::getConnection();
+        // Vérifier format token simple
+        if (!preg_match('/^[a-f0-9]{64}$/', $token)) {
+            $_SESSION['flash'] = [
+                'type' => 'error',
+                'message' => 'Token invalide.'
+            ];
+            header("Location: /user/login");
+            exit();
+        }
 
-        // Vérifier si le token est valide et non expiré
+        $conn = Database::getConnection();
         $stmt = $conn->prepare("SELECT id, user_id, expiry, used FROM password_reset_tokens WHERE token = ?");
         $stmt->bind_param("s", $token);
         $stmt->execute();
@@ -39,6 +47,7 @@ class ResetPassword implements ControllerInterface {
                 'type' => 'error',
                 'message' => 'Token invalide.'
             ];
+            $stmt->close();
             header("Location: /user/login");
             exit();
         }
@@ -47,7 +56,6 @@ class ResetPassword implements ControllerInterface {
         $stmt->fetch();
         $stmt->close();
 
-        // Vérifier si le token a déjà été utilisé
         if ($used) {
             $_SESSION['flash'] = [
                 'type' => 'error',
@@ -57,7 +65,6 @@ class ResetPassword implements ControllerInterface {
             exit();
         }
 
-        // Vérifier si le token a expiré
         if (strtotime($expiry) < time()) {
             $_SESSION['flash'] = [
                 'type' => 'error',
@@ -67,7 +74,6 @@ class ResetPassword implements ControllerInterface {
             exit();
         }
 
-        // Afficher le formulaire de réinitialisation
         $view = new ResetPasswordView($token);
         echo $view->render();
     }

@@ -18,7 +18,7 @@ $controllers = [
     new HomeController(),
     new \Controllers\User\RegisterPost(),
     new \Controllers\User\Logout(),
-    new ForgotPassword(),
+    new \Controllers\User\ForgotPassword(),
     new \Controllers\User\ForgotPasswordPost(),
     new \Controllers\User\ForgotPassword(),
     new \Controllers\User\ForgotPassword()

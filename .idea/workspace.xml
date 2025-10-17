@@ -5,18 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="925b88e4-b5f8-4c0a-8a09-e9574ec0ae58" name="Changes" comment="hashage du mdp">
-      <change afterPath="$PROJECT_DIR$/_assets/script/showPassword.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/inscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/inscription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgotPasswordPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgotPasswordPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ResetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ResetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ResetPasswordPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ResetPasswordPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/ForgotPasswordView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/ForgotPasswordView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/ResetPasswordView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/ResetPasswordView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/User/connection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/connection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/User/inscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/inscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/User/reset-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/User/reset-password.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -31,12 +38,17 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+    </include_path>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -52,7 +64,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mdp-oublie&quot;,
     &quot;last_opened_file_path&quot;: &quot;/amuhome/p24020247/Bureau/Sae_Manager_G4&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -98,6 +110,7 @@
       <workItem from="1759344909651" duration="597000" />
       <workItem from="1759385898077" duration="136000" />
       <workItem from="1759386036362" duration="14023000" />
+      <workItem from="1760704151724" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout connection">
       <option name="closed" value="true" />

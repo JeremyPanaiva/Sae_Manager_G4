@@ -11,7 +11,7 @@ class ResetPasswordView extends BaseView {
 
     public function __construct(string $token) {
         parent::__construct();
-        $this->token = $token;
+        $this->token = htmlspecialchars($token, ENT_QUOTES, 'UTF-8');
     }
 
     public function templatePath(): string {
@@ -19,8 +19,18 @@ class ResetPasswordView extends BaseView {
     }
 
     public function templateKeys(): array {
+        $flashMessage = '';
+
+        if (isset($_SESSION['flash'])) {
+            $type = $_SESSION['flash']['type'];
+            $message = htmlspecialchars($_SESSION['flash']['message']);
+            $flashMessage = "<div class='alert alert-" . ($type === 'success' ? 'success' : 'error') . "'>$message</div>";
+            unset($_SESSION['flash']);
+        }
+
         return [
-            'TOKEN_KEY' => $this->token
+            'TOKEN_KEY' => $this->token,
+            'FLASH_MESSAGE' => $flashMessage
         ];
     }
 }

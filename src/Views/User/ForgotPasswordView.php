@@ -13,6 +13,17 @@ class ForgotPasswordView extends BaseView {
     }
 
     public function templateKeys(): array {
-        return [];
+        $flashMessage = '';
+
+        if (isset($_SESSION['flash'])) {
+            $type = $_SESSION['flash']['type'];
+            $message = htmlspecialchars($_SESSION['flash']['message']);
+            $flashMessage = "<div class='alert alert-" . ($type === 'success' ? 'success' : 'error') . "'>$message</div>";
+            unset($_SESSION['flash']);
+        }
+
+        return [
+            'FLASH_MESSAGE' => $flashMessage
+        ];
     }
 }
