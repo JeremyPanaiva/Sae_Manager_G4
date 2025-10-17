@@ -2,6 +2,7 @@
 include "Autoloader.php";
 
 use Controllers\Home\HomeController;
+use Controllers\User\ForgotPasswordPost;
 use Controllers\User\Login;
 use Controllers\User\Register;
 use Controllers\User\ForgotPassword;
@@ -19,10 +20,9 @@ $controllers = [
     new \Controllers\User\RegisterPost(),
     new \Controllers\User\Logout(),
     new \Controllers\User\ForgotPassword(),
-    new \Controllers\User\ForgotPasswordPost(),
+    new ForgotPasswordPost(),
     new \Controllers\User\ForgotPassword(),
     new \Controllers\User\ForgotPassword()
-    new \Controllers\User\ForgotPasswordPost()
 ];
 
 // Gestion des routes via les controllers
