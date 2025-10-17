@@ -22,6 +22,7 @@ $controllers = [
     new \Controllers\User\ForgotPasswordPost(),
     new \Controllers\User\ForgotPassword(),
     new \Controllers\User\ForgotPassword()
+    new \Controllers\User\ForgotPasswordPost()
 ];
 
 // Gestion des routes via les controllers
