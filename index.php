@@ -27,7 +27,7 @@ $controllers = [
     new RegisterPost(),
     new Logout(),
     new ForgotPassword(),
-    new ListUsers(),
+    new ListUsers()
 ];
 
 // Récupérer uniquement le chemin de l'URL (sans query string)
