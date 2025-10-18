@@ -17,6 +17,9 @@ use Controllers\User\Register;
 use Controllers\User\RegisterPost;
 use Controllers\User\Logout;
 use Controllers\User\ForgotPassword;
+use Controllers\User\ForgotPasswordPost;
+use Controllers\User\ResetPassword;
+use Controllers\User\ResetPasswordPost;
 use Controllers\User\ListUsers;
 use Controllers\Legal\MentionsLegalesController;
 use Controllers\Dashboard\DashboardController;
@@ -37,6 +40,9 @@ $controllers = [
     new RegisterPost(),
     new Logout(),
     new ForgotPassword(),
+    new ForgotPasswordPost(),
+    new ResetPassword(),
+    new ResetPasswordPost(),
     new ListUsers(),
     new MentionsLegalesController(),
     new PlanDuSiteController(),
